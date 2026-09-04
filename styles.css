@@ -659,25 +659,64 @@ form {
   align-items: center;
 }
 
+/* ── Contact Form Panel ── */
+.contact-form-panel {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-gray);
+  border-radius: 2px;
+  padding: 44px 48px;
+  margin: 8px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-form-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.4), transparent 70%);
+}
+
+.contact-form-panel .section-label {
+  margin-bottom: 16px;
+}
+
+.form-panel-title {
+  color: var(--white);
+  font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+  margin-bottom: 10px;
+}
+
+.form-panel-sub {
+  font-size: 0.88rem;
+  color: var(--text-gray);
+  max-width: 480px;
+  margin-bottom: 36px;
+}
+
 /* ── Contact Form ── */
 .contact-form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  max-width: 700px;
+  gap: 24px;
+  max-width: 100%;
   margin: 0;
 }
 
 .contact-form .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  gap: 24px;
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
+  position: relative;
 }
 
 .form-group label {
@@ -686,19 +725,20 @@ form {
   font-weight: 500;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--text-gray);
+  color: var(--light-gray);
 }
 
 .form-group input,
 .form-group select,
 .form-group textarea {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid var(--border-gray);
-  border-radius: 1px;
-  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.025);
+  border: none;
+  border-bottom: 1px solid var(--border-gray);
+  border-radius: 0;
+  padding: 12px 4px;
   color: var(--white);
   font-family: var(--font-body);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 300;
   letter-spacing: 0.02em;
   transition: border-color var(--transition), background var(--transition);
@@ -707,30 +747,44 @@ form {
 
 .form-group textarea {
   resize: vertical;
-  min-height: 120px;
+  min-height: 130px;
+  border: 1px solid var(--border-gray);
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.015);
 }
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-  color: var(--text-gray);
+  color: #6a6a6a;
+  font-weight: 300;
+}
+
+.form-group input:hover,
+.form-group select:hover,
+.form-group textarea:hover {
+  border-color: rgba(255, 255, 255, 0.28);
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: rgba(255, 255, 255, 0.4);
-  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--pure-white);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .form-group select {
   appearance: none;
   -webkit-appearance: none;
   background-image: linear-gradient(45deg, transparent 50%, var(--text-gray) 50%), linear-gradient(135deg, var(--text-gray) 50%, transparent 50%);
-  background-position: calc(100% - 18px) center, calc(100% - 13px) center;
+  background-position: calc(100% - 6px) center, calc(100% - 1px) center;
   background-size: 5px 5px, 5px 5px;
   background-repeat: no-repeat;
   cursor: pointer;
+}
+
+.form-group select:focus {
+  background-image: linear-gradient(45deg, transparent 50%, var(--white) 50%), linear-gradient(135deg, var(--white) 50%, transparent 50%);
 }
 
 .form-group select option {
@@ -738,13 +792,20 @@ form {
   color: var(--white);
 }
 
-.contact-form button[type="submit"] {
+.contact-form .form-submit {
   align-self: flex-start;
+  margin: 8px 0 0;
   font-family: var(--font-condensed);
   cursor: pointer;
+  font-size: 0.8rem;
+  padding: 14px 38px;
 }
 
 @media (max-width: 768px) {
+  .contact-form-panel {
+    padding: 32px 24px;
+  }
+
   .contact-form .form-row {
     grid-template-columns: 1fr;
   }
