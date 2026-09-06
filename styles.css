@@ -1,28 +1,28 @@
 /* ============================================
    DIFFUSED.A — Professional Architectural CSS
-   Theme: Pure Monochrome — Black & White
+   Theme: Pure Monochrome — White & Black (Inverted)
    ============================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@300;400;500;700&display=swap');
 
 /* ── CSS Variables ── */
 :root {
-  --black: #0a0a0a;
-  --off-black: #111111;
-  --dark-gray: #1a1a1a;
-  --mid-gray: #2e2e2e;
-  --border-gray: #2a2a2a;
-  --text-gray: #9a9a9a;
-  --light-gray: #c8c8c8;
-  --white: #f5f4f0;
-  --pure-white: #ffffff;
+  --black: #f5f5f5;
+  --off-black: #eeeeee;
+  --dark-gray: #e5e5e5;
+  --mid-gray: #d1d1d1;
+  --border-gray: #d5d5d5;
+  --text-gray: #656565;
+  --light-gray: #373737;
+  --white: #0a0b0f;
+  --pure-white: #000000;
 
-  /* Accent — now pure white-based */
-  --accent: #f5f4f0;
-  --accent-light: #ffffff;
-  --accent-dim: #888888;
-  --accent-muted: rgba(255, 255, 255, 0.05);
-  --accent-border: rgba(255, 255, 255, 0.14);
+  /* Accent — now pure black-based */
+  --accent: #0a0b0f;
+  --accent-light: #000000;
+  --accent-dim: #777777;
+  --accent-muted: rgba(0, 0, 0, 0.05);
+  --accent-border: rgba(0, 0, 0, 0.14);
 
   --font-display: 'Cormorant Garamond', Georgia, serif;
   --font-body: 'Barlow', sans-serif;
@@ -60,8 +60,8 @@ body::before {
   position: fixed;
   inset: 0;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    linear-gradient(rgba(0, 0, 0, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.025) 1px, transparent 1px);
   background-size: 60px 60px;
   pointer-events: none;
   z-index: 0;
@@ -90,7 +90,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 100;
-  background-color: rgba(10, 10, 10, 0.97);
+  background-color: rgba(245, 245, 245, 0.97);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border-gray);
@@ -208,7 +208,7 @@ main, .page-content {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.04) 0%, transparent 68%);
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.04) 0%, transparent 68%);
   pointer-events: none;
 }
 
@@ -270,7 +270,7 @@ main, .page-content {
 
 .hero-tag:hover {
   color: var(--white);
-  border-color: rgba(255, 255, 255, 0.35);
+  border-color: rgba(0, 0, 0, 0.35);
 }
 
 /* ── Generic Sections ── */
@@ -330,14 +330,14 @@ video {
   display: block;
   margin: 32px auto;
   border: 1px solid var(--border-gray);
-  outline: 1px solid rgba(255, 255, 255, 0.07);
+  outline: 1px solid rgba(0, 0, 0, 0.07);
   outline-offset: 4px;
   transition: outline-color var(--transition), border-color var(--transition);
 }
 
 video:hover {
-  outline-color: rgba(255, 255, 255, 0.18);
-  border-color: rgba(255, 255, 255, 0.2);
+  outline-color: rgba(0, 0, 0, 0.18);
+  border-color: rgba(0, 0, 0, 0.2);
 }
 
 /* ── Images ── */
@@ -365,7 +365,7 @@ video:hover {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.07), rgba(0, 0, 0, 0.45));
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.07), rgba(255, 255, 255, 0.45));
   opacity: 0;
   transition: opacity var(--transition);
 }
@@ -404,7 +404,7 @@ video:hover {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.2) 60%, transparent 100%);
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.88) 0%, rgba(255, 255, 255, 0.2) 60%, transparent 100%);
   z-index: 1;
   transition: background var(--transition);
 }
@@ -414,7 +414,7 @@ video:hover {
 }
 
 #navigate button:hover::before {
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.92) 0%, rgba(255, 255, 255, 0.04) 60%, transparent 100%);
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.92) 0%, rgba(0, 0, 0, 0.04) 60%, transparent 100%);
 }
 
 #navigate button a {
@@ -566,16 +566,16 @@ video:hover {
 }
 
 .outcome-item {
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(0, 0, 0, 0.02);
   border: 1px solid var(--border-gray);
-  border-left: 2px solid rgba(255, 255, 255, 0.2);
+  border-left: 2px solid rgba(0, 0, 0, 0.2);
   padding: 16px 20px;
   border-radius: 1px;
   transition: border-left-color var(--transition), background var(--transition);
 }
 
 .outcome-item:hover {
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(0, 0, 0, 0.04);
   border-left-color: var(--white);
 }
 
@@ -599,7 +599,7 @@ video:hover {
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--text-gray);
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(0, 0, 0, 0.03);
   border: 1px solid var(--border-gray);
   padding: 8px 18px;
   border-radius: 1px;
@@ -607,7 +607,7 @@ video:hover {
 }
 
 .shop-category:hover {
-  border-color: rgba(255, 255, 255, 0.3);
+  border-color: rgba(0, 0, 0, 0.3);
   color: var(--white);
 }
 
@@ -623,15 +623,15 @@ section#works {
   padding: 28px;
   border: 1px solid var(--border-gray);
   border-radius: 2px;
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(0, 0, 0, 0.02);
   display: flex;
   flex-direction: column;
   transition: border-color var(--transition), background var(--transition);
 }
 
 .portfolio-item:hover {
-  border-color: rgba(255, 255, 255, 0.22);
-  background: rgba(255, 255, 255, 0.035);
+  border-color: rgba(0, 0, 0, 0.22);
+  background: rgba(0, 0, 0, 0.035);
 }
 
 .portfolio-item h3 {
@@ -661,7 +661,7 @@ form {
 
 /* ── Contact Form Panel ── */
 .contact-form-panel {
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(0, 0, 0, 0.02);
   border: 1px solid var(--border-gray);
   border-radius: 2px;
   padding: 44px 48px;
@@ -677,7 +677,7 @@ form {
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(to right, rgba(255, 255, 255, 0.4), transparent 70%);
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.4), transparent 70%);
 }
 
 .contact-form-panel .section-label {
@@ -731,7 +731,7 @@ form {
 .form-group input,
 .form-group select,
 .form-group textarea {
-  background: rgba(255, 255, 255, 0.025);
+  background: rgba(0, 0, 0, 0.025);
   border: none;
   border-bottom: 1px solid var(--border-gray);
   border-radius: 0;
@@ -750,19 +750,19 @@ form {
   min-height: 130px;
   border: 1px solid var(--border-gray);
   padding: 14px;
-  background: rgba(255, 255, 255, 0.015);
+  background: rgba(0, 0, 0, 0.015);
 }
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-  color: #6a6a6a;
+  color: #959595;
   font-weight: 300;
 }
 
 .form-group input:hover,
 .form-group select:hover,
 .form-group textarea:hover {
-  border-color: rgba(255, 255, 255, 0.28);
+  border-color: rgba(0, 0, 0, 0.28);
 }
 
 .form-group input:focus,
@@ -770,7 +770,7 @@ form {
 .form-group textarea:focus {
   outline: none;
   border-color: var(--pure-white);
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.05);
 }
 
 .form-group select {
@@ -862,19 +862,19 @@ footer {
 .social-icon:hover {
   transform: scale(1.15);
   filter: grayscale(0%) brightness(1.1);
-  border-color: rgba(255, 255, 255, 0.3);
+  border-color: rgba(0, 0, 0, 0.3);
 }
 
 .footer-copy {
   font-size: 0.72rem;
-  color: #555;
+  color: #aaaaaa;
   letter-spacing: 0.15em;
   text-transform: uppercase;
 }
 
 footer p {
   font-size: 0.72rem;
-  color: #555;
+  color: #aaaaaa;
   letter-spacing: 0.15em;
 }
 
@@ -882,7 +882,7 @@ footer p {
 .divider {
   width: 60px;
   height: 1px;
-  background: linear-gradient(to right, rgba(255, 255, 255, 0.3), transparent);
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.3), transparent);
   margin: 32px 0;
 }
 
