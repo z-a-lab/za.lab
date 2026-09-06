@@ -340,6 +340,43 @@ video:hover {
   border-color: rgba(0, 0, 0, 0.2);
 }
 
+/* ── Showreel Grid (portrait videos, side-by-side) ── */
+section#showreel {
+  max-width: 1100px;
+}
+
+.showreel-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  max-width: 900px;
+  margin: 40px auto 0;
+}
+
+.showreel-grid video {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0;
+  border: 1px solid var(--border-gray);
+  outline: 1px solid rgba(0, 0, 0, 0.07);
+  outline-offset: 4px;
+  transition: outline-color var(--transition), border-color var(--transition);
+}
+
+.showreel-grid video:hover {
+  outline-color: rgba(0, 0, 0, 0.18);
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+  .showreel-grid {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+    gap: 24px;
+  }
+}
+
 /* ── Images ── */
 .Image {
   width: 100%;
