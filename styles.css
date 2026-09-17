@@ -689,8 +689,9 @@ video:hover {
   color: var(--white);
 }
 
-/* ── Projects Grid ── */
-section#works {
+/* ── Projects / Research Grid ── */
+section#works,
+section#research {
   max-width: 1240px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -991,7 +992,8 @@ footer p {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  section#works {
+  section#works,
+  section#research {
     grid-template-columns: 1fr;
   }
 
