@@ -457,7 +457,7 @@ video:hover {
 /* ── Navigate Section ── */
 #navigate {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 2px;
   max-width: 100%;
   padding: 0;
@@ -475,7 +475,7 @@ video:hover {
   position: relative;
   overflow: hidden;
   transition: background var(--transition);
-  aspect-ratio: 1;
+  min-height: 320px;
 }
 
 #navigate button::before {
@@ -663,7 +663,7 @@ video:hover {
   margin: 0;
 }
 
-/* ── Shop section ── */
+/* ── Category Tags ── */
 .shop-categories {
   display: flex;
   gap: 12px;
