@@ -38,13 +38,12 @@
             vertical-align: middle;
         }
 
-        /* One centered column: filter row on top, projects stacked beneath it */
+        /* Projects stack in one centered column beneath the filter row */
         #works {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
-        #works > .category-nav,
         #works > .category-group {
             width: 100%;
             max-width: 1100px;
@@ -58,9 +57,11 @@
             margin-right: auto;
         }
 
-        /* Legend: filter row at the top of the section */
+        /* Filter row, placed right after the Projects heading */
         .category-nav {
-            margin-bottom: 4rem;
+            width: 100%;
+            max-width: 1100px;
+            margin: 2.5rem auto 0;
             text-align: center;
         }
         .category-nav-title {
@@ -153,12 +154,9 @@
         <span class="section-label">Selected Works</span>
         <h2>Projects</h2>
         <p>Bridging creative vision with contemporary architectural tools — a curated selection of work across conceptual design, AI visualization, and computational research.</p>
-    </section>
-
-    <section id="works">
 
         <!-- ===== Design Categories ===== -->
-        <nav class="category-nav" aria-label="Design categories">
+        <div class="category-nav" role="navigation" aria-label="Design categories">
             <h3 class="category-nav-title">Design Categories</h3>
             <div class="category-chips">
                 <a class="category-chip cat-all" href="#works" data-filter="all" aria-current="true"><span class="dot"></span>All</a>
@@ -168,7 +166,10 @@
                 <a class="category-chip cat-product" href="#product" data-filter="product"><span class="dot"></span>Product</a>
                 <a class="category-chip cat-landscape" href="#landscape" data-filter="landscape"><span class="dot"></span>Landscape</a>
             </div>
-        </nav>
+        </div>
+    </section>
+
+    <section id="works">
 
         <!-- ===== Residential ===== -->
         <div class="category-group cat-residential" id="residential">
