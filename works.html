@@ -128,6 +128,69 @@
             margin-top: 3.5rem;
         }
 
+        /* Clickable projects + single-project view */
+        .portfolio-item[hidden] { display: none; }
+        .project-link { color: inherit; text-decoration: none; }
+        .project-link:hover, .project-link:focus-visible { text-decoration: underline; text-underline-offset: 0.2em; }
+        .view-link {
+            display: inline-block;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: inherit;
+            text-decoration: none;
+            padding-bottom: 0.15rem;
+            border-bottom: 1px solid color-mix(in srgb, currentColor 35%, transparent);
+            transition: border-color 0.2s ease;
+        }
+        .view-link:hover, .view-link:focus-visible { border-color: currentColor; }
+        .back-link {
+            align-self: flex-start;
+            margin: 0 auto 2rem;
+            width: 100%;
+            max-width: 1000px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: inherit;
+            text-decoration: none;
+        }
+        .back-link[hidden] { display: none; }
+        .back-link:hover, .back-link:focus-visible { text-decoration: underline; text-underline-offset: 0.2em; }
+
+        .project-detail { display: none; margin-top: 2.5rem; text-align: left; }
+        #works.is-project .project-detail { display: block; }
+        #works.is-project .view-link { display: none; }
+        #works.is-project .portfolio-item { max-width: 1000px; }
+        #works.is-project .category-group { margin-bottom: 2rem; }
+
+        .detail-title { margin: 0 0 1rem; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.04em; opacity: 0.7; }
+        .project-brief p { margin: 0 0 1rem; line-height: 1.7; }
+        .project-facts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.25rem 2rem;
+            margin: 2rem 0 2.5rem;
+            padding: 1.25rem 0;
+            border-top: 1px solid color-mix(in srgb, currentColor 20%, transparent);
+            border-bottom: 1px solid color-mix(in srgb, currentColor 20%, transparent);
+        }
+        .project-facts dt { font-size: 0.75rem; letter-spacing: 0.04em; opacity: 0.6; margin-bottom: 0.25rem; }
+        .project-facts dd { margin: 0; font-size: 0.95rem; }
+
+        .project-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+        }
+        .project-gallery figure { margin: 0; }
+        .project-gallery figure:first-child { grid-column: 1 / -1; }
+        .project-gallery.single { grid-template-columns: 1fr; }
+        .project-gallery img { display: block; width: 100%; height: auto; border-radius: 4px; }
+        .project-gallery figcaption { margin-top: 0.5rem; font-size: 0.8rem; line-height: 1.5; opacity: 0.65; }
+        @media (max-width: 600px) {
+            .project-gallery { grid-template-columns: 1fr; }
+        }
+
         @media (prefers-reduced-motion: reduce) {
             .category-chip { transition: none; }
         }
@@ -171,6 +234,8 @@
 
     <section id="works">
 
+        <a class="back-link" href="#works" hidden><span aria-hidden="true">←</span> All projects</a>
+
         <!-- ===== Residential ===== -->
         <div class="category-group cat-residential" id="residential">
             <div class="category-head">
@@ -178,32 +243,62 @@
                 <h3>Residential</h3>
             </div>
 
-            <div class="portfolio-item">
+            <div class="portfolio-item" id="ornamental-facade" data-project="ornamental-facade">
                 <span class="section-label">01 — Facade Research</span>
-                <h3>Ornamental Facade</h3>
+                <h3><a class="project-link" href="#ornamental-facade">Ornamental Facade</a></h3>
                 <p>
-                    Investigating the intersection of computational ornamentation and
-                    architectural envelope design — generating patterned facade systems
-                    that encode cultural, structural, and environmental logic through
-                    parametric repetition and variation.
+                    Investigating the intersection of computational ornamentation and architectural envelope design — generating patterned facade systems that encode cultural, structural, and environmental logic through parametric repetition and variation.
                 </p>
                 <video width="800" controls autoplay loop muted>
                     <source src="videos/ornamental_facade.mp4" type="video/mp4">
                 </video>
+                <a class="view-link" href="#ornamental-facade">View project <span aria-hidden="true">→</span></a>
+
+                <div class="project-detail">
+                    <h4 class="detail-title">Project brief</h4>
+                    <div class="project-brief">
+                        <p>A perforated envelope wraps a compact volume, its diamond-shaped apertures repeating across the surface in a rhythm that filters light while keeping the facade legible as a single, calm mass.</p>
+                        <p>The study treats ornament as a performative layer rather than decoration: pattern density, aperture size and repetition are parameters that can be tuned toward privacy, shade and cultural reference.</p>
+                    </div>
+                    <dl class="project-facts">
+                        <div><dt>Category</dt><dd>Residential</dd></div>
+                        <div><dt>Type</dt><dd>Design exploration</dd></div>
+                        <div><dt>Method</dt><dd>Parametric pattern generation · AI-assisted visualization</dd></div>
+                    </dl>
+                    <div class="project-gallery single">
+                        <figure><img src="images/projects/ornamental-facade/ornamental-facade-01.jpg" alt="Perforated facade seen from the plaza, with a fully glazed entrance set into the patterned volume" loading="lazy"><figcaption>Perforated facade seen from the plaza, with a fully glazed entrance set into the patterned volume</figcaption></figure>
+                    </div>
+                </div>
             </div>
 
-            <div class="portfolio-item">
+            <div class="portfolio-item" id="sine-wave-architecture" data-project="sine-wave-architecture">
                 <span class="section-label">02 — Parametric Geometry</span>
-                <h3>Sine Wave Architecture</h3>
+                <h3><a class="project-link" href="#sine-wave-architecture">Sine Wave Architecture</a></h3>
                 <p>
-                    A structural envelope generated from continuous sine-wave
-                    modulation — translating a simple periodic function into
-                    undulating architectural surfaces through Grasshopper scripting
-                    and AI-driven visualization.
+                    A structural envelope generated from continuous sine-wave modulation — translating a simple periodic function into undulating architectural surfaces through Grasshopper scripting and AI-driven visualization.
                 </p>
                 <video width="800" controls autoplay loop muted>
                     <source src="videos/Sine_Wave_Architecture_2.mp4" type="video/mp4">
                 </video>
+                <a class="view-link" href="#sine-wave-architecture">View project <span aria-hidden="true">→</span></a>
+
+                <div class="project-detail">
+                    <h4 class="detail-title">Project brief</h4>
+                    <div class="project-brief">
+                        <p>A single continuous shell rises and falls along a sine curve, forming a vaulted white envelope that opens into a fully glazed front. The roof and walls read as one surface rather than separate elements.</p>
+                        <p>Amplitude and frequency of the wave drive the form, so a small change in the underlying function reshapes the whole section — a direct way to test spatial proportion, daylight and entry sequence.</p>
+                    </div>
+                    <dl class="project-facts">
+                        <div><dt>Category</dt><dd>Residential</dd></div>
+                        <div><dt>Type</dt><dd>Design exploration</dd></div>
+                        <div><dt>Method</dt><dd>Grasshopper scripting · AI-driven visualization</dd></div>
+                    </dl>
+                    <div class="project-gallery">
+                        <figure><img src="images/projects/sine-wave-architecture/sine-wave-architecture-01.jpg" alt="Sine-wave shell with a glazed front facing a paved forecourt" loading="lazy"><figcaption>Sine-wave shell with a glazed front facing a paved forecourt</figcaption></figure>
+                        <figure><img src="images/projects/sine-wave-architecture/sine-wave-architecture-02.jpg" alt="Curved vault at dusk, with warm interior lighting visible through the glazing" loading="lazy"><figcaption>Curved vault at dusk, with warm interior lighting visible through the glazing</figcaption></figure>
+                        <figure><img src="images/projects/sine-wave-architecture/sine-wave-architecture-03.jpg" alt="Side view of the undulating envelope framed by planting" loading="lazy"><figcaption>Side view of the undulating envelope framed by planting</figcaption></figure>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -214,72 +309,93 @@
                 <h3>Commercial</h3>
             </div>
 
-            <div class="portfolio-item">
-                <span class="section-label">03 — Computational Systems</span>
-                <h3>Grid</h3>
+            <div class="portfolio-item" id="stratified-travertine" data-project="stratified-travertine">
+                <span class="section-label">03 — Material Study</span>
+                <h3><a class="project-link" href="#stratified-travertine">Stratified Travertine</a></h3>
                 <p>
-                    A study of the architectural grid as both structure and surface — using
-                    parametric manipulation to push a fundamental ordering system toward
-                    spatial complexity, material depth, and perceptual richness.
-                </p>
-                <video width="800" controls autoplay loop muted>
-                    <source src="videos/Grid.mp4" type="video/mp4">
-                </video>
-            </div>
-
-            <div class="portfolio-item">
-                <span class="section-label">04 — Material Study</span>
-                <h3>Stratified Travertine</h3>
-                <p>
-                    An investigation into travertine as a generative material logic —
-                    layering sedimentary strata into an architectural massing study
-                    that explores texture, porosity, and light through AI-assisted
-                    material visualization.
+                    An investigation into travertine as a generative material logic — layering sedimentary strata into an architectural massing study that explores texture, porosity, and light through AI-assisted material visualization.
                 </p>
                 <video width="800" controls autoplay loop muted>
                     <source src="videos/Stratified_Travertine.mp4" type="video/mp4">
                 </video>
+                <a class="view-link" href="#stratified-travertine">View project <span aria-hidden="true">→</span></a>
+
+                <div class="project-detail">
+                    <h4 class="detail-title">Project brief</h4>
+                    <div class="project-brief">
+                        <p>Stacked, softly offset travertine bands form a mid-rise massing whose plan edge undulates, so each floor plate catches light differently and the building reads like a cut through sedimentary rock.</p>
+                        <p>The massing was first resolved as a clean geometric model, then carried into visualization to study how the stone layering, glazing at the base and surrounding streetscape work together.</p>
+                    </div>
+                    <dl class="project-facts">
+                        <div><dt>Category</dt><dd>Commercial</dd></div>
+                        <div><dt>Type</dt><dd>Design exploration</dd></div>
+                        <div><dt>Method</dt><dd>Layered massing logic · AI-assisted material visualization</dd></div>
+                    </dl>
+                    <div class="project-gallery">
+                        <figure><img src="images/projects/stratified-travertine/stratified-travertine-01.jpg" alt="Aerial view of the layered travertine massing within its urban block" loading="lazy"><figcaption>Aerial view of the layered travertine massing within its urban block</figcaption></figure>
+                        <figure><img src="images/projects/stratified-travertine/stratified-travertine-02.jpg" alt="Street-level view showing the stratified facade rising above a glazed base" loading="lazy"><figcaption>Street-level view showing the stratified facade rising above a glazed base</figcaption></figure>
+                        <figure><img src="images/projects/stratified-travertine/stratified-travertine-03.jpg" alt="Massing model studies — plan outline and elevation of the undulating layers" loading="lazy"><figcaption>Massing model studies — plan outline and elevation of the undulating layers</figcaption></figure>
+                    </div>
+                </div>
             </div>
 
-            <div class="portfolio-item">
-                <span class="section-label">05 — Facade Research</span>
-                <h3>Modular Tile Facade System</h3>
+            <div class="portfolio-item" id="modular-tile-facade-system" data-project="modular-tile-facade-system">
+                <span class="section-label">04 — Facade Research</span>
+                <h3><a class="project-link" href="#modular-tile-facade-system">Modular Tile Facade System</a></h3>
                 <p>
-                    A modular tiling system for architectural envelopes, studying
-                    repetition, variation, and assembly logic at facade scale —
-                    bridging parametric tile generation with AI-assisted material
-                    and lighting studies.
+                    A modular tiling system for architectural envelopes, studying repetition, variation, and assembly logic at facade scale — bridging parametric tile generation with AI-assisted material and lighting studies.
                 </p>
                 <video width="800" controls autoplay loop muted>
                     <source src="videos/facade_tile_system_1_v2.mp4" type="video/mp4">
                 </video>
+                <a class="view-link" href="#modular-tile-facade-system">View project <span aria-hidden="true">→</span></a>
+
+                <div class="project-detail">
+                    <h4 class="detail-title">Project brief</h4>
+                    <div class="project-brief">
+                        <p>A facade built from a small family of modular tiles, where repetition keeps assembly rational and controlled variation gives the surface depth and rhythm.</p>
+                        <p>The study looks at how tile geometry, joint logic and light interact across a whole elevation, not only on a single unit.</p>
+                    </div>
+                    <dl class="project-facts">
+                        <div><dt>Category</dt><dd>Commercial</dd></div>
+                        <div><dt>Type</dt><dd>Design exploration</dd></div>
+                        <div><dt>Method</dt><dd>Parametric tile generation · AI-assisted material and lighting studies</dd></div>
+                    </dl>
+                </div>
             </div>
 
-            <div class="portfolio-item">
-                <span class="section-label">06 — Sacred Architecture</span>
-                <h3>Crystal Mosque</h3>
+            <div class="portfolio-item" id="crystal-mosque" data-project="crystal-mosque">
+                <span class="section-label">05 — Sacred Architecture</span>
+                <h3><a class="project-link" href="#crystal-mosque">Crystal Mosque</a></h3>
                 <p>
-                    A faceted reinterpretation of mosque typology, where crystalline
-                    geometry replaces conventional massing to modulate light,
-                    structure, and spiritual atmosphere — developed through
-                    parametric faceting and AI-driven visualization.
+                    A faceted reinterpretation of mosque typology, where crystalline geometry replaces conventional massing to modulate light, structure, and spiritual atmosphere — developed through parametric faceting and AI-driven visualization.
                 </p>
                 <video width="800" controls autoplay loop muted>
                     <source src="videos/Crystal_Mosque2.mp4" type="video/mp4">
                 </video>
-            </div>
+                <a class="view-link" href="#crystal-mosque">View project <span aria-hidden="true">→</span></a>
 
-            <div class="portfolio-item">
-                <span class="section-label">07 — Generative Surface</span>
-                <h3>Layered Flow</h3>
-                <p>
-                    Multiple flow fields layered and intersected to produce emergent surface
-                    geometries — an investigation into how simple rule-based systems
-                    generate spatially complex, atmospheric architectural forms.
-                </p>
-                <video width="800" controls autoplay loop muted>
-                    <source src="videos/layered_flow_2.mp4" type="video/mp4">
-                </video>
+                <div class="project-detail">
+                    <h4 class="detail-title">Project brief</h4>
+                    <div class="project-brief">
+                        <p>A folded, faceted roof sits over a central drum with a lantern, with a single minaret marking the corner. The geometry replaces the conventional dome-and-block massing with planes that catch and redirect light.</p>
+                        <p>The project moves between two registers: a clean white massing model used to resolve the faceting and structure, and atmospheric visualizations that test the form within a dense urban setting.</p>
+                    </div>
+                    <dl class="project-facts">
+                        <div><dt>Category</dt><dd>Commercial</dd></div>
+                        <div><dt>Type</dt><dd>Design exploration</dd></div>
+                        <div><dt>Method</dt><dd>Parametric faceting · AI-driven visualization</dd></div>
+                    </dl>
+                    <div class="project-gallery">
+                        <figure><img src="images/projects/crystal-mosque/crystal-mosque-01.jpg" alt="Aerial view of the faceted roof over a street corner" loading="lazy"><figcaption>Aerial view of the faceted roof over a street corner</figcaption></figure>
+                        <figure><img src="images/projects/crystal-mosque/crystal-mosque-02.jpg" alt="Second aerial view showing the central drum and minaret" loading="lazy"><figcaption>Second aerial view showing the central drum and minaret</figcaption></figure>
+                        <figure><img src="images/projects/crystal-mosque/crystal-mosque-03.jpg" alt="Alternate roof study with a sharper, more angular folding" loading="lazy"><figcaption>Alternate roof study with a sharper, more angular folding</figcaption></figure>
+                        <figure><img src="images/projects/crystal-mosque/crystal-mosque-04.jpg" alt="Another roof variation seen from above, with a tall minaret" loading="lazy"><figcaption>Another roof variation seen from above, with a tall minaret</figcaption></figure>
+                        <figure><img src="images/projects/crystal-mosque/crystal-mosque-05.jpg" alt="Massing model — roof, drum and minaret in plan view" loading="lazy"><figcaption>Massing model — roof, drum and minaret in plan view</figcaption></figure>
+                        <figure><img src="images/projects/crystal-mosque/crystal-mosque-06.jpg" alt="Massing model — three-quarter view of the faceted envelope" loading="lazy"><figcaption>Massing model — three-quarter view of the faceted envelope</figcaption></figure>
+                        <figure><img src="images/projects/crystal-mosque/crystal-mosque-07.jpg" alt="Massing model sheet with four views of the roof and minaret" loading="lazy"><figcaption>Massing model sheet with four views of the roof and minaret</figcaption></figure>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -290,16 +406,33 @@
                 <h3>Interior</h3>
             </div>
 
-            <div class="portfolio-item">
-                <span class="section-label">08 — Conceptual Form</span>
-                <h3>Fluid Chand</h3>
+            <div class="portfolio-item" id="fluid-chand" data-project="fluid-chand">
+                <span class="section-label">06 — Conceptual Form</span>
+                <h3><a class="project-link" href="#fluid-chand">Fluid Chand</a></h3>
                 <p>
-                    Chandelier Geometry that highlights beautiful interior scenery
-                    while adding luxurious presence.
+                    Chandelier Geometry that highlights beautiful interior scenery while adding luxurious presence.
                 </p>
                 <video width="800" controls autoplay loop muted>
                     <source src="videos/chand22.mp4" type="video/mp4">
                 </video>
+                <a class="view-link" href="#fluid-chand">View project <span aria-hidden="true">→</span></a>
+
+                <div class="project-detail">
+                    <h4 class="detail-title">Project brief</h4>
+                    <div class="project-brief">
+                        <p>A pendant light built from slender vertical ribs that swell into a rounded body and narrow again at the base, so the fixture reads as a soft, flowing silhouette.</p>
+                        <p>The open ribbing lets light and the room beyond show through, keeping the piece present without blocking the view of the interior.</p>
+                    </div>
+                    <dl class="project-facts">
+                        <div><dt>Category</dt><dd>Interior</dd></div>
+                        <div><dt>Type</dt><dd>Design exploration</dd></div>
+                        <div><dt>Method</dt><dd>Parametric rib geometry · AI-assisted interior visualization</dd></div>
+                    </dl>
+                    <div class="project-gallery">
+                        <figure><img src="images/projects/fluid-chand/fluid-chand-01.jpg" alt="Pendant seen in a bright, minimal room with timber flooring" loading="lazy"><figcaption>Pendant seen in a bright, minimal room with timber flooring</figcaption></figure>
+                        <figure><img src="images/projects/fluid-chand/fluid-chand-02.jpg" alt="Close view of the ribbed form against a folded ceiling" loading="lazy"><figcaption>Close view of the ribbed form against a folded ceiling</figcaption></figure>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -310,18 +443,34 @@
                 <h3>Product</h3>
             </div>
 
-            <div class="portfolio-item">
-                <span class="section-label">09 — Urban Furniture</span>
-                <h3>Green Bench</h3>
+            <div class="portfolio-item" id="green-bench" data-project="green-bench">
+                <span class="section-label">07 — Urban Furniture</span>
+                <h3><a class="project-link" href="#green-bench">Green Bench</a></h3>
                 <p>
-                    A study in integrating vegetation and seating into a single
-                    piece of urban furniture — exploring how planting, shade, and
-                    rest can be combined at a human scale within public and
-                    landscape settings.
+                    A study in integrating vegetation and seating into a single piece of urban furniture — exploring how planting, shade, and rest can be combined at a human scale within public and landscape settings.
                 </p>
                 <video width="800" controls autoplay loop muted>
                     <source src="videos/green_bench.mp4" type="video/mp4">
                 </video>
+                <a class="view-link" href="#green-bench">View project <span aria-hidden="true">→</span></a>
+
+                <div class="project-detail">
+                    <h4 class="detail-title">Project brief</h4>
+                    <div class="project-brief">
+                        <p>A sliced, continuous bench whose layers shift from pale lime to deep green along its length, so the object itself echoes the planting around it.</p>
+                        <p>Placed within a garden path, it is studied at human scale — how it is approached, how it is sat on, and how it sits among foliage.</p>
+                    </div>
+                    <dl class="project-facts">
+                        <div><dt>Category</dt><dd>Product</dd></div>
+                        <div><dt>Type</dt><dd>Design exploration</dd></div>
+                        <div><dt>Method</dt><dd>Sectional layering · AI-assisted visualization</dd></div>
+                    </dl>
+                    <div class="project-gallery">
+                        <figure><img src="images/projects/green-bench/green-bench-01.jpg" alt="Bench along a curving garden path" loading="lazy"><figcaption>Bench along a curving garden path</figcaption></figure>
+                        <figure><img src="images/projects/green-bench/green-bench-02.jpg" alt="Close view of the layered bench with a seated figure for scale" loading="lazy"><figcaption>Close view of the layered bench with a seated figure for scale</figcaption></figure>
+                        <figure><img src="images/projects/green-bench/green-bench-03.jpg" alt="Form studies of the bench shown from four angles" loading="lazy"><figcaption>Form studies of the bench shown from four angles</figcaption></figure>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -332,18 +481,34 @@
                 <h3>Landscape</h3>
             </div>
 
-            <div class="portfolio-item">
-                <span class="section-label">10 — Landscape Design</span>
-                <h3>Voronoi Garden</h3>
+            <div class="portfolio-item" id="voronoi-garden" data-project="voronoi-garden">
+                <span class="section-label">08 — Landscape Design</span>
+                <h3><a class="project-link" href="#voronoi-garden">Voronoi Garden</a></h3>
                 <p>
-                    A generative landscape concept built on Voronoi tessellation —
-                    using cellular subdivision logic to organize planting beds,
-                    pathways, and shaded thresholds into an organic garden
-                    composition.
+                    A generative landscape concept built on Voronoi tessellation — using cellular subdivision logic to organize planting beds, pathways, and shaded thresholds into an organic garden composition.
                 </p>
                 <video width="800" controls autoplay loop muted>
                     <source src="videos/voronoi_Garden.mp4" type="video/mp4">
                 </video>
+                <a class="view-link" href="#voronoi-garden">View project <span aria-hidden="true">→</span></a>
+
+                <div class="project-detail">
+                    <h4 class="detail-title">Project brief</h4>
+                    <div class="project-brief">
+                        <p>A public square organised by Voronoi cells: some become lawns, some paving, and some shallow water, with paths following the cell edges. The result is a garden that feels irregular but is governed by a single rule.</p>
+                        <p>The study starts from a plan diagram that assigns each cell a function, then follows it through to aerial and eye-level views of the finished composition.</p>
+                    </div>
+                    <dl class="project-facts">
+                        <div><dt>Category</dt><dd>Landscape</dd></div>
+                        <div><dt>Type</dt><dd>Design exploration</dd></div>
+                        <div><dt>Method</dt><dd>Voronoi tessellation · AI-assisted landscape visualization</dd></div>
+                    </dl>
+                    <div class="project-gallery">
+                        <figure><img src="images/projects/voronoi-garden/voronoi-garden-01.jpg" alt="Eye-level view across lawns, paving and water within the cellular layout" loading="lazy"><figcaption>Eye-level view across lawns, paving and water within the cellular layout</figcaption></figure>
+                        <figure><img src="images/projects/voronoi-garden/voronoi-garden-02.jpg" alt="Aerial view of the full square set among surrounding buildings" loading="lazy"><figcaption>Aerial view of the full square set among surrounding buildings</figcaption></figure>
+                        <figure><img src="images/projects/voronoi-garden/voronoi-garden-03.jpg" alt="Plan diagram showing cells assigned to lawn, paving and planting" loading="lazy"><figcaption>Plan diagram showing cells assigned to lawn, paving and planting</figcaption></figure>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -385,42 +550,78 @@
     </footer>
 
     <script>
-        /* Show only the projects of the chosen design category. Without JavaScript, everything stays visible. */
+        /* Filter by design category (#residential…) or open a single project (#project-name).
+           Without JavaScript, everything stays visible. */
         (function () {
-            var chips = document.querySelectorAll('.category-chip');
+            var chips  = document.querySelectorAll('.category-chip');
             var groups = document.querySelectorAll('.category-group');
-            var ids = Array.prototype.map.call(groups, function (g) { return g.id; });
+            var items  = document.querySelectorAll('.portfolio-item[data-project]');
+            var works  = document.getElementById('works');
+            var back   = document.querySelector('.back-link');
+            var catIds = Array.prototype.map.call(groups, function (g) { return g.id; });
+            var projIds = Array.prototype.map.call(items, function (i) { return i.id; });
 
-            function apply(filter) {
-                if (filter !== 'all' && ids.indexOf(filter) === -1) { filter = 'all'; }
-                Array.prototype.forEach.call(groups, function (g) {
-                    var hide = filter !== 'all' && g.id !== filter;
-                    g.hidden = hide;
-                    Array.prototype.forEach.call(g.querySelectorAll('video'), function (v) {
-                        if (hide) { v.pause(); }
-                        else { var r = v.play(); if (r && r.catch) { r.catch(function () {}); } }
-                    });
+            function setVideos(scope, play) {
+                Array.prototype.forEach.call(scope.querySelectorAll('video'), function (v) {
+                    if (!play) { v.pause(); }
+                    else { var r = v.play(); if (r && r.catch) { r.catch(function () {}); } }
                 });
+            }
+
+            function setChip(filter) {
                 Array.prototype.forEach.call(chips, function (c) {
                     if (c.getAttribute('data-filter') === filter) { c.setAttribute('aria-current', 'true'); }
                     else { c.removeAttribute('aria-current'); }
                 });
-                return filter;
+            }
+
+            function apply(key) {
+                var project = null;
+                if (projIds.indexOf(key) !== -1) { project = document.getElementById(key); }
+                var filter = key;
+                if (project) { filter = project.closest('.category-group').id; }
+                else if (catIds.indexOf(filter) === -1) { filter = 'all'; }
+
+                Array.prototype.forEach.call(groups, function (g) {
+                    var hideGroup = filter !== 'all' && g.id !== filter;
+                    g.hidden = hideGroup;
+                    Array.prototype.forEach.call(g.querySelectorAll('.portfolio-item'), function (it) {
+                        var hideItem = hideGroup || (project && it !== project);
+                        it.hidden = !!hideItem;
+                        setVideos(it, !hideItem);
+                    });
+                });
+
+                works.classList.toggle('is-project', !!project);
+                if (back) { back.hidden = !project; }
+                setChip(filter);
+                return { filter: filter, project: !!project };
             }
 
             Array.prototype.forEach.call(chips, function (chip) {
                 chip.addEventListener('click', function (e) {
                     e.preventDefault();
-                    var f = apply(chip.getAttribute('data-filter'));
+                    var f = chip.getAttribute('data-filter');
+                    apply(f);
                     if (history.replaceState) {
                         history.replaceState(null, '', f === 'all' ? location.pathname + location.search : '#' + f);
                     }
                 });
             });
 
-            function fromHash() { apply(location.hash.replace('#', '') || 'all'); }
-            window.addEventListener('hashchange', fromHash);
-            fromHash();
+            function fromHash(scroll) {
+                var r = apply(location.hash.replace('#', '') || 'all');
+                if (scroll && r.project) { works.scrollIntoView({ behavior: 'auto', block: 'start' }); }
+            }
+            window.addEventListener('hashchange', function () { fromHash(true); });
+            if (back) {
+                back.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    apply('all');
+                    if (history.replaceState) { history.replaceState(null, '', location.pathname + location.search); }
+                });
+            }
+            fromHash(location.hash.length > 1 && projIds.indexOf(location.hash.slice(1)) !== -1);
         })();
     </script>
 
