@@ -38,28 +38,30 @@
             vertical-align: middle;
         }
 
-        /* Stack legend and projects in one left-aligned column */
+        /* One centered column: filter row on top, projects stacked beneath it */
         #works {
             display: flex;
             flex-direction: column;
-            align-items: stretch;
+            align-items: center;
         }
         #works > .category-nav,
         #works > .category-group {
             width: 100%;
             max-width: 1100px;
-            margin-left: 0;
+            margin-left: auto;
             margin-right: auto;
             flex: 0 0 auto;
         }
         #works .portfolio-item {
-            margin-left: 0;
+            max-width: 800px;
+            margin-left: auto;
             margin-right: auto;
         }
 
         /* Legend: filter row at the top of the section */
         .category-nav {
             margin-bottom: 4rem;
+            text-align: center;
         }
         .category-nav-title {
             margin: 0 0 1rem;
@@ -70,6 +72,7 @@
         .category-chips {
             display: flex;
             flex-wrap: wrap;
+            justify-content: center;
             gap: 0.75rem;
         }
         .category-chip {
@@ -109,6 +112,7 @@
         .category-head {
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 0.7rem;
             margin: 0 0 2.5rem;
             padding-bottom: 0.8rem;
