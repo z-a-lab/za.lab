@@ -38,13 +38,31 @@
             vertical-align: middle;
         }
 
-        /* Small legend at the top of the section */
-        .category-nav {
+        /* Stack legend and projects in one left-aligned column */
+        #works {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+        }
+        #works > .category-nav,
+        #works > .category-group {
+            width: 100%;
             max-width: 1100px;
-            margin: 0 auto 2.5rem;
+            margin-left: 0;
+            margin-right: auto;
+            flex: 0 0 auto;
+        }
+        #works .portfolio-item {
+            margin-left: 0;
+            margin-right: auto;
+        }
+
+        /* Legend: filter row at the top of the section */
+        .category-nav {
+            margin-bottom: 4rem;
         }
         .category-nav-title {
-            margin: 0 0 0.75rem;
+            margin: 0 0 1rem;
             font-size: 0.85rem;
             font-weight: 600;
             opacity: 0.7;
@@ -52,43 +70,57 @@
         .category-chips {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 0.75rem;
         }
         .category-chip {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.35rem 0.8rem;
+            gap: 0.55rem;
+            padding: 0.45rem 1rem;
             border: 1px solid color-mix(in srgb, currentColor 25%, transparent);
             border-radius: 999px;
             font-size: 0.85rem;
             color: inherit;
             text-decoration: none;
-            transition: border-color 0.2s ease;
+            cursor: pointer;
+            transition: border-color 0.2s ease, background-color 0.2s ease;
         }
         .category-chip:hover,
         .category-chip:focus-visible {
             border-color: currentColor;
         }
+        .category-chip[aria-current="true"] {
+            border-color: currentColor;
+            background: color-mix(in srgb, currentColor 8%, transparent);
+        }
+        /* "All" dot shows the whole palette */
+        .cat-all {
+            --dot: conic-gradient(var(--cat-residential), var(--cat-commercial), var(--cat-interior), var(--cat-product), var(--cat-landscape), var(--cat-residential));
+        }
 
-        /* Quiet grouping — a thin line, a dot and a name */
+        /* Category groups: thin line, a dot and a name */
         .category-group {
-            max-width: 1100px;
-            margin: 0 auto 3rem;
+            margin-bottom: 5rem;
             scroll-margin-top: 90px;
+        }
+        .category-group[hidden] {
+            display: none;
         }
         .category-head {
             display: flex;
             align-items: center;
-            gap: 0.6rem;
-            margin: 0 0 1.25rem;
-            padding-bottom: 0.6rem;
+            gap: 0.7rem;
+            margin: 0 0 2.5rem;
+            padding-bottom: 0.8rem;
             border-bottom: 1px solid color-mix(in srgb, currentColor 20%, transparent);
         }
         .category-head h3 {
             margin: 0;
             font-size: 1.05rem;
             font-weight: 600;
+        }
+        .category-group .portfolio-item + .portfolio-item {
+            margin-top: 3.5rem;
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -121,15 +153,16 @@
 
     <section id="works">
 
-        <!-- ===== Z.A Lab Design Categories ===== -->
+        <!-- ===== Design Categories ===== -->
         <nav class="category-nav" aria-label="Design categories">
-            <h3 class="category-nav-title">Z.A Lab Design Categories</h3>
+            <h3 class="category-nav-title">Design Categories</h3>
             <div class="category-chips">
-                <a class="category-chip cat-residential" href="#residential"><span class="dot"></span>Residential</a>
-                <a class="category-chip cat-commercial" href="#commercial"><span class="dot"></span>Commercial</a>
-                <a class="category-chip cat-interior" href="#interior"><span class="dot"></span>Interior</a>
-                <a class="category-chip cat-product" href="#product"><span class="dot"></span>Product</a>
-                <a class="category-chip cat-landscape" href="#landscape"><span class="dot"></span>Landscape</a>
+                <a class="category-chip cat-all" href="#works" data-filter="all" aria-current="true"><span class="dot"></span>All</a>
+                <a class="category-chip cat-residential" href="#residential" data-filter="residential"><span class="dot"></span>Residential</a>
+                <a class="category-chip cat-commercial" href="#commercial" data-filter="commercial"><span class="dot"></span>Commercial</a>
+                <a class="category-chip cat-interior" href="#interior" data-filter="interior"><span class="dot"></span>Interior</a>
+                <a class="category-chip cat-product" href="#product" data-filter="product"><span class="dot"></span>Product</a>
+                <a class="category-chip cat-landscape" href="#landscape" data-filter="landscape"><span class="dot"></span>Landscape</a>
             </div>
         </nav>
 
@@ -345,6 +378,46 @@
         </div>
         <p class="footer-copy">© 2025 Z.A Lab — All Rights Reserved</p>
     </footer>
+
+    <script>
+        /* Show only the projects of the chosen design category. Without JavaScript, everything stays visible. */
+        (function () {
+            var chips = document.querySelectorAll('.category-chip');
+            var groups = document.querySelectorAll('.category-group');
+            var ids = Array.prototype.map.call(groups, function (g) { return g.id; });
+
+            function apply(filter) {
+                if (filter !== 'all' && ids.indexOf(filter) === -1) { filter = 'all'; }
+                Array.prototype.forEach.call(groups, function (g) {
+                    var hide = filter !== 'all' && g.id !== filter;
+                    g.hidden = hide;
+                    Array.prototype.forEach.call(g.querySelectorAll('video'), function (v) {
+                        if (hide) { v.pause(); }
+                        else { var r = v.play(); if (r && r.catch) { r.catch(function () {}); } }
+                    });
+                });
+                Array.prototype.forEach.call(chips, function (c) {
+                    if (c.getAttribute('data-filter') === filter) { c.setAttribute('aria-current', 'true'); }
+                    else { c.removeAttribute('aria-current'); }
+                });
+                return filter;
+            }
+
+            Array.prototype.forEach.call(chips, function (chip) {
+                chip.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    var f = apply(chip.getAttribute('data-filter'));
+                    if (history.replaceState) {
+                        history.replaceState(null, '', f === 'all' ? location.pathname + location.search : '#' + f);
+                    }
+                });
+            });
+
+            function fromHash() { apply(location.hash.replace('#', '') || 'all'); }
+            window.addEventListener('hashchange', fromHash);
+            fromHash();
+        })();
+    </script>
 
 </body>
 </html>
