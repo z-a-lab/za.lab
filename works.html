@@ -6,6 +6,95 @@
     <title>Projects — Z.A Lab</title>
     <meta name="description" content="Projects by Z.A Lab — AI architectural visualization, parametric modeling, and computational design.">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Design Categories — a quiet hinting layer on top of styles.css */
+        :root {
+            /* light blue -> grey -> green */
+            --cat-residential: #9CC5E6;  /* light blue */
+            --cat-commercial:  #9DB2C6;  /* blue-grey */
+            --cat-interior:    #B0B5B8;  /* soft grey */
+            --cat-product:     #A9C2A0;  /* grey-green sage */
+            --cat-landscape:   #A8D898;  /* light green */
+        }
+        .cat-residential { --dot: var(--cat-residential); }
+        .cat-commercial  { --dot: var(--cat-commercial); }
+        .cat-interior    { --dot: var(--cat-interior); }
+        .cat-product     { --dot: var(--cat-product); }
+        .cat-landscape   { --dot: var(--cat-landscape); }
+
+        .dot,
+        .category-group .section-label::before {
+            display: inline-block;
+            width: 0.55rem;
+            height: 0.55rem;
+            border-radius: 50%;
+            background: var(--dot);
+            box-shadow: 0 0 0 1px color-mix(in srgb, currentColor 18%, transparent);
+            flex: none;
+        }
+        .category-group .section-label::before {
+            content: "";
+            margin-right: 0.5rem;
+            vertical-align: middle;
+        }
+
+        /* Small legend at the top of the section */
+        .category-nav {
+            max-width: 1100px;
+            margin: 0 auto 2.5rem;
+        }
+        .category-nav-title {
+            margin: 0 0 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            opacity: 0.7;
+        }
+        .category-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .category-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.35rem 0.8rem;
+            border: 1px solid color-mix(in srgb, currentColor 25%, transparent);
+            border-radius: 999px;
+            font-size: 0.85rem;
+            color: inherit;
+            text-decoration: none;
+            transition: border-color 0.2s ease;
+        }
+        .category-chip:hover,
+        .category-chip:focus-visible {
+            border-color: currentColor;
+        }
+
+        /* Quiet grouping — a thin line, a dot and a name */
+        .category-group {
+            max-width: 1100px;
+            margin: 0 auto 3rem;
+            scroll-margin-top: 90px;
+        }
+        .category-head {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin: 0 0 1.25rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 1px solid color-mix(in srgb, currentColor 20%, transparent);
+        }
+        .category-head h3 {
+            margin: 0;
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .category-chip { transition: none; }
+        }
+    </style>
 </head>
 <body>
 
@@ -32,140 +121,192 @@
 
     <section id="works">
 
-        <div class="portfolio-item">
-            <span class="section-label">01 — Computational Systems</span>
-            <h3>Grid</h3>
-            <p>
-                A study of the architectural grid as both structure and surface — using
-                parametric manipulation to push a fundamental ordering system toward
-                spatial complexity, material depth, and perceptual richness.
-            </p>
-            <video width="800" controls autoplay loop muted>
-                <source src="videos/Grid.mp4" type="video/mp4">
-            </video>
+        <!-- ===== Z.A Lab Design Categories ===== -->
+        <nav class="category-nav" aria-label="Design categories">
+            <h3 class="category-nav-title">Z.A Lab Design Categories</h3>
+            <div class="category-chips">
+                <a class="category-chip cat-residential" href="#residential"><span class="dot"></span>Residential</a>
+                <a class="category-chip cat-commercial" href="#commercial"><span class="dot"></span>Commercial</a>
+                <a class="category-chip cat-interior" href="#interior"><span class="dot"></span>Interior</a>
+                <a class="category-chip cat-product" href="#product"><span class="dot"></span>Product</a>
+                <a class="category-chip cat-landscape" href="#landscape"><span class="dot"></span>Landscape</a>
+            </div>
+        </nav>
+
+        <!-- ===== Residential ===== -->
+        <div class="category-group cat-residential" id="residential">
+            <div class="category-head">
+                <span class="dot"></span>
+                <h3>Residential</h3>
+            </div>
+
+            <div class="portfolio-item">
+                <span class="section-label">01 — Facade Research</span>
+                <h3>Ornamental Facade</h3>
+                <p>
+                    Investigating the intersection of computational ornamentation and
+                    architectural envelope design — generating patterned facade systems
+                    that encode cultural, structural, and environmental logic through
+                    parametric repetition and variation.
+                </p>
+                <video width="800" controls autoplay loop muted>
+                    <source src="videos/ornamental_facade.mp4" type="video/mp4">
+                </video>
+            </div>
+
+            <div class="portfolio-item">
+                <span class="section-label">02 — Parametric Geometry</span>
+                <h3>Sine Wave Architecture</h3>
+                <p>
+                    A structural envelope generated from continuous sine-wave
+                    modulation — translating a simple periodic function into
+                    undulating architectural surfaces through Grasshopper scripting
+                    and AI-driven visualization.
+                </p>
+                <video width="800" controls autoplay loop muted>
+                    <source src="videos/Sine_Wave_Architecture_2.mp4" type="video/mp4">
+                </video>
+            </div>
         </div>
 
-        <div class="portfolio-item">
-            <span class="section-label">02 — Generative Surface</span>
-            <h3>Layered Flow</h3>
-            <p>
-                Multiple flow fields layered and intersected to produce emergent surface
-                geometries — an investigation into how simple rule-based systems
-                generate spatially complex, atmospheric architectural forms.
-            </p>
-            <video width="800" controls autoplay loop muted>
-                <source src="videos/layered_flow_2.mp4" type="video/mp4">
-            </video>
+        <!-- ===== Commercial ===== -->
+        <div class="category-group cat-commercial" id="commercial">
+            <div class="category-head">
+                <span class="dot"></span>
+                <h3>Commercial</h3>
+            </div>
+
+            <div class="portfolio-item">
+                <span class="section-label">03 — Computational Systems</span>
+                <h3>Grid</h3>
+                <p>
+                    A study of the architectural grid as both structure and surface — using
+                    parametric manipulation to push a fundamental ordering system toward
+                    spatial complexity, material depth, and perceptual richness.
+                </p>
+                <video width="800" controls autoplay loop muted>
+                    <source src="videos/Grid.mp4" type="video/mp4">
+                </video>
+            </div>
+
+            <div class="portfolio-item">
+                <span class="section-label">04 — Material Study</span>
+                <h3>Stratified Travertine</h3>
+                <p>
+                    An investigation into travertine as a generative material logic —
+                    layering sedimentary strata into an architectural massing study
+                    that explores texture, porosity, and light through AI-assisted
+                    material visualization.
+                </p>
+                <video width="800" controls autoplay loop muted>
+                    <source src="videos/Stratified_Travertine.mp4" type="video/mp4">
+                </video>
+            </div>
+
+            <div class="portfolio-item">
+                <span class="section-label">05 — Facade Research</span>
+                <h3>Modular Tile Facade System</h3>
+                <p>
+                    A modular tiling system for architectural envelopes, studying
+                    repetition, variation, and assembly logic at facade scale —
+                    bridging parametric tile generation with AI-assisted material
+                    and lighting studies.
+                </p>
+                <video width="800" controls autoplay loop muted>
+                    <source src="videos/facade_tile_system_1_v2.mp4" type="video/mp4">
+                </video>
+            </div>
+
+            <div class="portfolio-item">
+                <span class="section-label">06 — Sacred Architecture</span>
+                <h3>Crystal Mosque</h3>
+                <p>
+                    A faceted reinterpretation of mosque typology, where crystalline
+                    geometry replaces conventional massing to modulate light,
+                    structure, and spiritual atmosphere — developed through
+                    parametric faceting and AI-driven visualization.
+                </p>
+                <video width="800" controls autoplay loop muted>
+                    <source src="videos/Crystal_Mosque2.mp4" type="video/mp4">
+                </video>
+            </div>
+
+            <div class="portfolio-item">
+                <span class="section-label">07 — Generative Surface</span>
+                <h3>Layered Flow</h3>
+                <p>
+                    Multiple flow fields layered and intersected to produce emergent surface
+                    geometries — an investigation into how simple rule-based systems
+                    generate spatially complex, atmospheric architectural forms.
+                </p>
+                <video width="800" controls autoplay loop muted>
+                    <source src="videos/layered_flow_2.mp4" type="video/mp4">
+                </video>
+            </div>
         </div>
 
-        <div class="portfolio-item">
-            <span class="section-label">03 — Facade Research</span>
-            <h3>Ornamental Facade</h3>
-            <p>
-                Investigating the intersection of computational ornamentation and
-                architectural envelope design — generating patterned facade systems
-                that encode cultural, structural, and environmental logic through
-                parametric repetition and variation.
-            </p>
-            <video width="800" controls autoplay loop muted>
-                <source src="videos/ornamental_facade.mp4" type="video/mp4">
-            </video>
+        <!-- ===== Interior ===== -->
+        <div class="category-group cat-interior" id="interior">
+            <div class="category-head">
+                <span class="dot"></span>
+                <h3>Interior</h3>
+            </div>
+
+            <div class="portfolio-item">
+                <span class="section-label">08 — Conceptual Form</span>
+                <h3>Fluid Chand</h3>
+                <p>
+                    Chandelier Geometry that highlights beautiful interior scenery
+                    while adding luxurious presence.
+                </p>
+                <video width="800" controls autoplay loop muted>
+                    <source src="videos/chand22.mp4" type="video/mp4">
+                </video>
+            </div>
         </div>
 
-        <div class="portfolio-item">
-            <span class="section-label">04 — Parametric Geometry</span>
-            <h3>Sine Wave Architecture</h3>
-            <p>
-                A structural envelope generated from continuous sine-wave
-                modulation — translating a simple periodic function into
-                undulating architectural surfaces through Grasshopper scripting
-                and AI-driven visualization.
-            </p>
-            <video width="800" controls autoplay loop muted>
-                <source src="videos/Sine_Wave_Architecture_2.mp4" type="video/mp4">
-            </video>
+        <!-- ===== Product ===== -->
+        <div class="category-group cat-product" id="product">
+            <div class="category-head">
+                <span class="dot"></span>
+                <h3>Product</h3>
+            </div>
+
+            <div class="portfolio-item">
+                <span class="section-label">09 — Urban Furniture</span>
+                <h3>Green Bench</h3>
+                <p>
+                    A study in integrating vegetation and seating into a single
+                    piece of urban furniture — exploring how planting, shade, and
+                    rest can be combined at a human scale within public and
+                    landscape settings.
+                </p>
+                <video width="800" controls autoplay loop muted>
+                    <source src="videos/green_bench.mp4" type="video/mp4">
+                </video>
+            </div>
         </div>
 
-        <div class="portfolio-item">
-            <span class="section-label">05 — Material Study</span>
-            <h3>Stratified Travertine</h3>
-            <p>
-                An investigation into travertine as a generative material logic —
-                layering sedimentary strata into an architectural massing study
-                that explores texture, porosity, and light through AI-assisted
-                material visualization.
-            </p>
-            <video width="800" controls autoplay loop muted>
-                <source src="videos/Stratified_Travertine.mp4" type="video/mp4">
-            </video>
-        </div>
+        <!-- ===== Landscape ===== -->
+        <div class="category-group cat-landscape" id="landscape">
+            <div class="category-head">
+                <span class="dot"></span>
+                <h3>Landscape</h3>
+            </div>
 
-        <div class="portfolio-item">
-            <span class="section-label">06 — Landscape Design</span>
-            <h3>Voronoi Garden</h3>
-            <p>
-                A generative landscape concept built on Voronoi tessellation —
-                using cellular subdivision logic to organize planting beds,
-                pathways, and shaded thresholds into an organic garden
-                composition.
-            </p>
-            <video width="800" controls autoplay loop muted>
-                <source src="videos/voronoi_Garden.mp4" type="video/mp4">
-            </video>
-        </div>
-
-        <div class="portfolio-item">
-            <span class="section-label">07 — Conceptual Form</span>
-            <h3>Fluid Chand</h3>
-            <p>
-                Chandelier Geometry that highlights beautiful interior scenery
-                while adding luxurious presence.
-            </p>
-            <video width="800" controls autoplay loop muted>
-                <source src="videos/chand22.mp4" type="video/mp4">
-            </video>
-        </div>
-
-        <div class="portfolio-item">
-            <span class="section-label">08 — Sacred Architecture</span>
-            <h3>Crystal Mosque</h3>
-            <p>
-                A faceted reinterpretation of mosque typology, where crystalline
-                geometry replaces conventional massing to modulate light,
-                structure, and spiritual atmosphere — developed through
-                parametric faceting and AI-driven visualization.
-            </p>
-            <video width="800" controls autoplay loop muted>
-                <source src="videos/Crystal_Mosque2.mp4" type="video/mp4">
-            </video>
-        </div>
-
-        <div class="portfolio-item">
-            <span class="section-label">09 — Facade Research</span>
-            <h3>Modular Tile Facade System</h3>
-            <p>
-                A modular tiling system for architectural envelopes, studying
-                repetition, variation, and assembly logic at facade scale —
-                bridging parametric tile generation with AI-assisted material
-                and lighting studies.
-            </p>
-            <video width="800" controls autoplay loop muted>
-                <source src="videos/facade_tile_system_1_v2.mp4" type="video/mp4">
-            </video>
-        </div>
-
-        <div class="portfolio-item">
-            <span class="section-label">10 — Urban Furniture</span>
-            <h3>Green Bench</h3>
-            <p>
-                A study in integrating vegetation and seating into a single
-                piece of urban furniture — exploring how planting, shade, and
-                rest can be combined at a human scale within public and
-                landscape settings.
-            </p>
-            <video width="800" controls autoplay loop muted>
-                <source src="videos/green_bench.mp4" type="video/mp4">
-            </video>
+            <div class="portfolio-item">
+                <span class="section-label">10 — Landscape Design</span>
+                <h3>Voronoi Garden</h3>
+                <p>
+                    A generative landscape concept built on Voronoi tessellation —
+                    using cellular subdivision logic to organize planting beds,
+                    pathways, and shaded thresholds into an organic garden
+                    composition.
+                </p>
+                <video width="800" controls autoplay loop muted>
+                    <source src="videos/voronoi_Garden.mp4" type="video/mp4">
+                </video>
+            </div>
         </div>
 
     </section>
