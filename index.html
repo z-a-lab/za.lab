@@ -6,6 +6,43 @@
     <title>Z.A Lab — Architectural AI & Computational Design</title>
     <meta name="description" content="Z.A Lab is a research and services lab at the intersection of architectural design, artificial intelligence, and parametric computation.">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Featured project */
+        .featured-project {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+            text-align: left;
+        }
+        .featured-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr);
+            gap: 2.5rem;
+            align-items: end;
+            margin-top: 1.25rem;
+        }
+        .featured-media { display: block; }
+        .featured-media img { display: block; width: 100%; height: auto; border-radius: 4px; }
+        .featured-copy h2 { margin: 0 0 0.35rem; text-align: left; }
+        .featured-meta { margin: 0 0 1.25rem; font-size: 0.85rem; opacity: 0.65; text-align: left; }
+        .featured-copy p { line-height: 1.7; text-align: left; }
+        .featured-link {
+            display: inline-block;
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: inherit;
+            text-decoration: none;
+            padding-bottom: 0.15rem;
+            border-bottom: 1px solid color-mix(in srgb, currentColor 35%, transparent);
+            transition: border-color 0.2s ease;
+        }
+        .featured-link:hover, .featured-link:focus-visible { border-color: currentColor; }
+        @media (max-width: 800px) {
+            .featured-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+        }
+        @media (prefers-reduced-motion: reduce) { .featured-link { transition: none; } }
+    </style>
 </head>
 <body>
 
@@ -54,6 +91,21 @@
                         <source src="videos/Stratified_Travertine.mp4" type="video/mp4">
                     </video>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="featured" class="featured-project">
+        <span class="section-label">Featured Project</span>
+        <div class="featured-grid">
+            <a class="featured-media" href="works.html#polygonal-perforation">
+                <img src="images/projects/polygonal-perforation/polygonal-perforation-01.jpg" alt="Polygonal Perforation — faceted white facade with irregular polygonal openings" loading="lazy">
+            </a>
+            <div class="featured-copy">
+                <h2>Polygonal Perforation</h2>
+                <p class="featured-meta">Commercial — Facade Research</p>
+                <p>Inspired by crystal faceted geometries, the facade is constructed upon a logic of Voronoi pattern to develop irregular, unique polygonal perforations.</p>
+                <a class="featured-link" href="works.html#polygonal-perforation">View project <span aria-hidden="true">→</span></a>
             </div>
         </div>
     </section>

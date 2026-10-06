@@ -191,6 +191,15 @@
             .project-gallery { grid-template-columns: 1fr; }
         }
 
+
+        /* Featured project — larger scale */
+        #works .portfolio-item.is-featured,
+        #works.is-project .portfolio-item.is-featured { max-width: 1100px; }
+        .is-featured .featured-media { display: block; margin: 1.25rem 0 0; }
+        .is-featured .featured-media img { display: block; width: 100%; height: auto; border-radius: 4px; }
+        .is-featured h3 { font-size: 1.6em; }
+        .project-gallery video { display: block; width: 100%; height: auto; border-radius: 4px; background: #000; }
+
         @media (prefers-reduced-motion: reduce) {
             .category-chip { transition: none; }
         }
@@ -307,8 +316,39 @@
                 <h3>Commercial</h3>
             </div>
 
+            <div class="portfolio-item is-featured" id="polygonal-perforation" data-project="polygonal-perforation">
+                <span class="section-label">03 — Facade Research</span>
+                <h3><a class="project-link" href="#polygonal-perforation">Polygonal Perforation</a></h3>
+                <p>
+                    Inspired by crystal faceted geometries, the facade is constructed upon a logic of Voronoi pattern to develop irregular, unique polygonal perforations — a folded white skin that filters daylight into a commercial volume above a fully glazed ground floor.
+                </p>
+                <a class="featured-media" href="#polygonal-perforation">
+                    <img src="images/projects/polygonal-perforation/polygonal-perforation-01.jpg" alt="Corner view of the faceted white facade with irregular polygonal openings above a glazed ground floor">
+                </a>
+                <a class="view-link" href="#polygonal-perforation">View project <span aria-hidden="true">→</span></a>
+
+                <div class="project-detail">
+                    <h4 class="detail-title">Project brief</h4>
+                    <div class="project-brief">
+                        <p>Inspired by crystal faceted geometries, the facade is constructed upon a logic of Voronoi pattern to develop irregular, unique polygonal perforations. Each opening grows from a cell of the diagram, so no two apertures share the same shape or size.</p>
+                        <p>Folded facets surround every opening and carry the surface in and out of shadow through the day. The same faceted skin continues inside, shaping the atrium ceiling and bringing daylight down into the floors, while a plain flank wall and a transparent base keep the volume calm at street level.</p>
+                    </div>
+                    <dl class="project-facts">
+                        <div><dt>Category</dt><dd>Commercial</dd></div>
+                        <div><dt>Method</dt><dd>Computational Design, Generative AI, Technical Design Approaches</dd></div>
+                    </dl>
+                    <div class="project-gallery">
+                        <figure><video src="videos/facated_landscape.mp4" controls loop muted playsinline preload="metadata"></video><figcaption>Animated study of the perforated facade</figcaption></figure>
+                        <figure><img src="images/projects/polygonal-perforation/polygonal-perforation-02.jpg" alt="Close view of the faceted panels folding around irregular polygonal openings" loading="lazy"><figcaption>Close view of the faceted panels folding around irregular polygonal openings</figcaption></figure>
+                        <figure><img src="images/projects/polygonal-perforation/polygonal-perforation-03.jpg" alt="Detail of the openings with interior lighting and planting visible through the glass" loading="lazy"><figcaption>Detail of the openings, with interior lighting and planting visible through the glass</figcaption></figure>
+                        <figure><img src="images/projects/polygonal-perforation/polygonal-perforation-04.jpg" alt="Atrium where the faceted skin continues overhead and admits daylight" loading="lazy"><figcaption>Atrium where the faceted skin continues overhead and admits daylight</figcaption></figure>
+                        <figure><img src="images/projects/polygonal-perforation/polygonal-perforation-05.jpg" alt="Front elevation of the perforated skin above a fully glazed ground floor" loading="lazy"><figcaption>Front elevation of the perforated skin above a fully glazed ground floor</figcaption></figure>
+                    </div>
+                </div>
+            </div>
+
             <div class="portfolio-item" id="stratified-travertine" data-project="stratified-travertine">
-                <span class="section-label">03 — Material Study</span>
+                <span class="section-label">04 — Material Study</span>
                 <h3><a class="project-link" href="#stratified-travertine">Stratified Travertine</a></h3>
                 <p>
                     An investigation into travertine as a generative material logic — layering sedimentary strata into an architectural massing study that explores texture, porosity, and light through AI-assisted material visualization.
@@ -337,7 +377,7 @@
             </div>
 
             <div class="portfolio-item" id="modular-tile-facade-system" data-project="modular-tile-facade-system">
-                <span class="section-label">04 — Facade Research</span>
+                <span class="section-label">05 — Facade Research</span>
                 <h3><a class="project-link" href="#modular-tile-facade-system">Modular Tile Facade System</a></h3>
                 <p>
                     A modular tiling system for architectural envelopes, studying repetition, variation, and assembly logic at facade scale — bridging parametric tile generation with AI-assisted material and lighting studies.
@@ -361,7 +401,7 @@
             </div>
 
             <div class="portfolio-item" id="crystal-mosque" data-project="crystal-mosque">
-                <span class="section-label">05 — Sacred Architecture</span>
+                <span class="section-label">06 — Sacred Architecture</span>
                 <h3><a class="project-link" href="#crystal-mosque">Crystal Mosque</a></h3>
                 <p>
                     A faceted reinterpretation of mosque typology, where crystalline geometry replaces conventional massing to modulate light, structure, and spiritual atmosphere — developed through parametric faceting and AI-driven visualization.
@@ -402,7 +442,7 @@
             </div>
 
             <div class="portfolio-item" id="fluid-chand" data-project="fluid-chand">
-                <span class="section-label">06 — Conceptual Form</span>
+                <span class="section-label">07 — Conceptual Form</span>
                 <h3><a class="project-link" href="#fluid-chand">Fluid Chand</a></h3>
                 <p>
                     Chandelier Geometry that highlights beautiful interior scenery while adding luxurious presence.
@@ -438,7 +478,7 @@
             </div>
 
             <div class="portfolio-item" id="green-bench" data-project="green-bench">
-                <span class="section-label">07 — Urban Furniture</span>
+                <span class="section-label">08 — Urban Furniture</span>
                 <h3><a class="project-link" href="#green-bench">Green Bench</a></h3>
                 <p>
                     A study in integrating vegetation and seating into a single piece of urban furniture — exploring how planting, shade, and rest can be combined at a human scale within public and landscape settings.
@@ -475,7 +515,7 @@
             </div>
 
             <div class="portfolio-item" id="voronoi-garden" data-project="voronoi-garden">
-                <span class="section-label">08 — Landscape Design</span>
+                <span class="section-label">09 — Landscape Design</span>
                 <h3><a class="project-link" href="#voronoi-garden">Voronoi Garden</a></h3>
                 <p>
                     A generative landscape concept built on Voronoi tessellation — using cellular subdivision logic to organize planting beds, pathways, and shaded thresholds into an organic garden composition.
@@ -556,7 +596,7 @@
             function setVideos(scope, play) {
                 Array.prototype.forEach.call(scope.querySelectorAll('video'), function (v) {
                     if (!play) { v.pause(); }
-                    else { var r = v.play(); if (r && r.catch) { r.catch(function () {}); } }
+                    else if (v.offsetParent !== null) { var r = v.play(); if (r && r.catch) { r.catch(function () {}); } }
                 });
             }
 
@@ -574,6 +614,8 @@
                 if (project) { filter = project.closest('.category-group').id; }
                 else if (catIds.indexOf(filter) === -1) { filter = 'all'; }
 
+                works.classList.toggle('is-project', !!project);
+
                 Array.prototype.forEach.call(groups, function (g) {
                     var hideGroup = filter !== 'all' && g.id !== filter;
                     g.hidden = hideGroup;
@@ -584,7 +626,6 @@
                     });
                 });
 
-                works.classList.toggle('is-project', !!project);
                 if (back) { back.hidden = !project; }
                 setChip(filter);
                 return { filter: filter, project: !!project };
