@@ -991,13 +991,8 @@ footer p {
 }
 
 .hl-figure--contact {
-  max-width: 200px;
+  max-width: 120px;
   margin: 0 0 24px;
-}
-
-/* The inquiry panel is tinted slightly darker than the page */
-.contact-form-panel .hl-figure {
-  --hairline-plate: #f0f0f0;
 }
 
 @media (max-width: 900px) {
