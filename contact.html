@@ -35,6 +35,7 @@
         <div class="divider"></div>
 
         <div class="contact-form-panel">
+            <div class="hl-figure hl-figure--contact" data-figure="plug" data-label="A plug drawn toward a wall socket"></div>
             <span class="section-label">Send an Inquiry</span>
             <h3 class="form-panel-title">Tell us about your project</h3>
             <p class="form-panel-sub">Fill out the form below and we'll get back to you within 1–2 business days.</p>
@@ -76,6 +77,8 @@
         </div>
 
         <div class="divider"></div>
+
+        <div class="hl-figure hl-figure--contact" data-figure="dish" data-label="A satellite dish that aims toward the pointer"></div>
 
         <div class="contact-info">
             <div class="contact-block">
@@ -136,6 +139,35 @@
         </div>
         <p class="footer-copy">© 2025 Z.A Lab — All Rights Reserved</p>
     </footer>
+
+    <script type="module">
+        /* Interactive line figures (Hairline). Each loads only once it scrolls into view;
+           if the library can't be reached, the figure is simply hidden. */
+        const figures = document.querySelectorAll('.hl-figure[data-figure]');
+        if (figures.length) {
+            let library;
+            const load = () => library || (library = import('https://esm.sh/@lucasmarkes/hairline@0.5.1'));
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(async (entry) => {
+                    if (!entry.isIntersecting) return;
+                    const el = entry.target;
+                    observer.unobserve(el);
+                    try {
+                        const mod = await load();
+                        mod[el.dataset.figure](el, {
+                            theme: 'light',
+                            intensity: 0.6,
+                            play: el.hasAttribute('data-play'),
+                            label: el.dataset.label
+                        });
+                    } catch (err) {
+                        el.hidden = true;
+                    }
+                });
+            }, { rootMargin: '200px' });
+            figures.forEach((el) => observer.observe(el));
+        }
+    </script>
 
 </body>
 </html>

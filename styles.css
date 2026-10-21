@@ -957,6 +957,55 @@ footer p {
   letter-spacing: 0.15em;
 }
 
+/* ── Hairline figures (interactive line drawings) ──
+   --hairline-plate must match the colour the figure sits on, because it
+   hides whatever is drawn behind each plate. */
+.hl-figure {
+  --hairline-plate: var(--black);
+  --hairline-hi: #0a0b0f;
+  --hairline-edge: #8c8c92;
+  --hairline-mid: #b9b9be;
+  --hairline-lo: #dcdcdf;
+  --hairline-stroke: 0.9;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 240px;
+  aspect-ratio: 5 / 4;
+  margin: 0 auto 24px;
+}
+
+.hl-figure--hero {
+  max-width: 300px;
+  margin: 40px 0 0;
+}
+
+.hl-figure--featured {
+  max-width: 220px;
+  margin: 2rem 0 0;
+}
+
+.hl-figure--category {
+  max-width: 220px;
+  margin: 0 auto 1.25rem;
+}
+
+.hl-figure--contact {
+  max-width: 200px;
+  margin: 0 0 24px;
+}
+
+/* The inquiry panel is tinted slightly darker than the page */
+.contact-form-panel .hl-figure {
+  --hairline-plate: #f0f0f0;
+}
+
+@media (max-width: 900px) {
+  .hl-figure--hero {
+    margin: 32px auto 0;
+  }
+}
+
 /* ── Divider ── */
 .divider {
   width: 60px;

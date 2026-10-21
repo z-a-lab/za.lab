@@ -66,8 +66,8 @@
             <div class="hero-content">
                 <span class="hero-eyebrow">Research &amp; Services Lab</span>
                 <h1 class="hero-title">
-                    Architecture at the Edge of<br>
-                    <em>Intelligence &amp; Computation</em>
+                    Architectural &amp; Interior Design<br>
+                    <em>Advanced by Computation &amp; AI</em>
                 </h1>
                 <p class="hero-subtitle">
                     Z.A Lab is a design lab at the intersection of architectural practice,
@@ -80,6 +80,7 @@
                     <span class="hero-tag">Parametric Modeling</span>
                     <span class="hero-tag">Computational Design</span>
                 </div>
+                <div class="hl-figure hl-figure--hero" data-figure="settle" data-play data-label="Crooked tiles sliding into an ordered tree as the pointer approaches"></div>
             </div>
             <div class="hero-showreel">
                 <span class="section-label">Showreel</span>
@@ -106,6 +107,7 @@
                 <p class="featured-meta">Commercial — Facade Research</p>
                 <p>Inspired by crystal faceted geometries, the facade is constructed upon a logic of Voronoi pattern to develop irregular, unique polygonal perforations.</p>
                 <a class="featured-link" href="works.html#polygonal-perforation">View project <span aria-hidden="true">→</span></a>
+                <div class="hl-figure hl-figure--featured" data-figure="exploded" data-label="A facade taken apart into separate layers"></div>
             </div>
         </div>
     </section>
@@ -144,6 +146,35 @@
         </div>
         <p class="footer-copy">© 2025 Z.A Lab — All Rights Reserved</p>
     </footer>
+
+    <script type="module">
+        /* Interactive line figures (Hairline). Each loads only once it scrolls into view;
+           if the library can't be reached, the figure is simply hidden. */
+        const figures = document.querySelectorAll('.hl-figure[data-figure]');
+        if (figures.length) {
+            let library;
+            const load = () => library || (library = import('https://esm.sh/@lucasmarkes/hairline@0.5.1'));
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(async (entry) => {
+                    if (!entry.isIntersecting) return;
+                    const el = entry.target;
+                    observer.unobserve(el);
+                    try {
+                        const mod = await load();
+                        mod[el.dataset.figure](el, {
+                            theme: 'light',
+                            intensity: 0.6,
+                            play: el.hasAttribute('data-play'),
+                            label: el.dataset.label
+                        });
+                    } catch (err) {
+                        el.hidden = true;
+                    }
+                });
+            }, { rootMargin: '200px' });
+            figures.forEach((el) => observer.observe(el));
+        }
+    </script>
 
 </body>
 </html>
