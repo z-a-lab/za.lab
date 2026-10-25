@@ -6,6 +6,7 @@
     <title>Research — Z.A Lab</title>
     <meta name="description" content="Research at Z.A Lab — alternative design methods and techniques through the fusion of computational design and generative AI tools.">
     <link rel="stylesheet" href="styles.css">
+    <script>try{if(localStorage.getItem('zalab-lang')==='ar'){document.documentElement.lang='ar';document.documentElement.dir='rtl';}}catch(e){}</script>
     <style>
         /* Featured publication — scoped so it works with the existing styles.css */
         .featured-publication {
@@ -86,6 +87,7 @@
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
+        <button type="button" class="lang-toggle" id="lang-toggle" lang="ar" aria-label="التبديل إلى اللغة العربية">العربية</button>
     </header>
 
     <section>
@@ -223,6 +225,108 @@
         </div>
         <p class="footer-copy">© 2025 Z.A Lab — All Rights Reserved</p>
     </footer>
+
+    <script>
+        /* Language switch (English / Arabic). The English text stays in the markup above;
+           the Arabic text lives in this dictionary and is swapped in when Arabic is chosen.
+           The choice is remembered across pages. */
+        (function () {
+            var AR = {
+                "Home": "الرئيسية",
+                "Projects": "المشاريع",
+                "Research": "الأبحاث",
+                "Contact": "تواصل معنا",
+                "Architectural AI & Computational Design Lab": "مختبر الذكاء الاصطناعي المعماري والتصميم الحوسبي",
+                "© 2025 Z.A Lab — All Rights Reserved": "© 2025 Z.A Lab — جميع الحقوق محفوظة",
+                "Z.A Lab Logo": "شعار Z.A Lab",
+                "Instagram": "إنستغرام",
+                "LinkedIn": "لينكدإن",
+                "Patreon": "باترون",
+                "YouTube": "يوتيوب",
+                "Research — Z.A Lab": "الأبحاث — Z.A Lab",
+                "Research at Z.A Lab — alternative design methods and techniques through the fusion of computational design and generative AI tools.": "الأبحاث في Z.A Lab — طرق وتقنيات تصميم بديلة من خلال دمج التصميم الحوسبي مع أدوات الذكاء الاصطناعي التوليدي.",
+                "Ongoing Inquiry": "بحث مستمر",
+                "Z.A Lab maintains an ongoing research practice examining alternative design methods and techniques through the fusion of computational design with generative AI tools. Rather than treating algorithmic modelling and machine intelligence as separate stages, the work tests how they can operate as a single continuous process — where geometric logic, visual interpretation, and real-time feedback inform one another throughout the design act.": "يحافظ Z.A Lab على ممارسة بحثية مستمرة تستكشف طرق وتقنيات تصميم بديلة عبر دمج التصميم الحوسبي مع أدوات الذكاء الاصطناعي التوليدي. وبدلًا من التعامل مع النمذجة الخوارزمية والذكاء الآلي كمرحلتين منفصلتين، يختبر العمل كيف يمكن أن يعملا كعملية واحدة متصلة — حيث يُغذّي المنطق الهندسي والتفسير البصري والتغذية الراجعة اللحظية بعضها بعضًا طوال فعل التصميم.",
+                "These studies are design explorations and generative outputs: investigations into method rather than finished building proposals. Findings from this research feed directly into the studio’s project work, visualization workflows, and teaching.": "هذه الدراسات استكشافات تصميمية ومخرجات توليدية: أي أبحاث في المنهج وليست مقترحات مبانٍ مكتملة. وتغذّي نتائج هذا البحث مباشرةً أعمال المشاريع في الاستوديو وسير عمل التصور البصري والتدريس.",
+                "Research Threads": "محاور البحث",
+                "Computational Form-Finding": "إيجاد الشكل الحوسبي",
+                "Fine-Tuned AI Models": "نماذج الذكاء الاصطناعي المضبوطة بدقة",
+                "Real-Time Generative Feedback": "تغذية راجعة توليدية فورية",
+                "Peer-reviewed publication · 2026": "منشور محكَّم · 2026",
+                "Read the article": "اقرأ المقال",
+                "01 — Form-Finding": "01 — إيجاد الشكل",
+                "Form-Finding Approach": "نهج إيجاد الشكل",
+                "Constructing and evolving geometric systems within Grasshopper, then refining them through fine-tuned AI models. This workflow bridges algorithmic generation with intelligent visual interpretation, producing architectural forms that exceed conventional design methods.": "بناء الأنظمة الهندسية وتطويرها داخل Grasshopper، ثم صقلها عبر نماذج ذكاء اصطناعي مضبوطة بدقة. يربط مسار العمل هذا التوليد الخوارزمي بالتفسير البصري الذكي، لينتج أشكالًا معمارية تتجاوز أساليب التصميم التقليدية.",
+                "02 — Real-Time AI Rendering": "02 — التصيير الفوري بالذكاء الاصطناعي",
+                "Re-Imagining the Computational Design Process": "إعادة تصوّر عملية التصميم الحوسبي",
+                "Integrating AI-powered real-time rendering directly within the computational design process — enabling dynamic visual feedback during form exploration and igniting deeper conceptual studies.": "دمج التصيير الفوري المدعوم بالذكاء الاصطناعي مباشرةً داخل عملية التصميم الحوسبي — بما يتيح تغذية بصرية راجعة ديناميكية أثناء استكشاف الشكل ويُحفّز دراسات مفاهيمية أعمق.",
+                "03 — Generative AI × Computational Design": "03 — الذكاء الاصطناعي التوليدي × التصميم الحوسبي",
+                "Layered Flow": "التدفق الطبقي",
+                "An investigation into where generative AI meets computational design workflows. Multiple flow fields are layered and intersected in a parametric model to produce emergent surface geometries, which are then interpreted through generative AI to develop rich, contextually relevant design schemes. The rule-based system supplies spatial structure; the AI layer adds atmosphere, material and context — so each informs the other as the scheme evolves.": "استقصاء للنقطة التي يلتقي فيها الذكاء الاصطناعي التوليدي بمسارات عمل التصميم الحوسبي. تُراكَب حقول تدفق متعددة وتتقاطع داخل نموذج بارامتري لإنتاج هندسات سطحية ناشئة، ثم تُفسَّر عبر الذكاء الاصطناعي التوليدي لتطوير مخططات تصميمية ثرية وملائمة للسياق. يوفّر النظام القائم على القواعد البنية الفراغية، بينما تضيف طبقة الذكاء الاصطناعي الأجواء والمادة والسياق — فيُغني كلٌّ منهما الآخر مع تطوّر المخطط.",
+                "04 — MCP × Design Process": "04 — MCP × عملية التصميم",
+                "Integrating MCP into the Design Process": "دمج MCP في عملية التصميم",
+                "Connecting an AI assistant directly to modelling software through the Model Context Protocol (MCP), so a written design brief can be turned into working architectural documents. Within a single workflow, plans, sections and 3D models are generated and refined in the modelling environment, then carried into visualization — shortening the distance between an initial idea and a coordinated set of drawings and views.": "ربط مساعد ذكاء اصطناعي مباشرةً ببرنامج النمذجة عبر بروتوكول سياق النموذج (MCP)، بحيث يمكن تحويل موجز تصميمي مكتوب إلى وثائق معمارية عملية. ضمن مسار عمل واحد، تُولَّد المساقط والمقاطع والنماذج ثلاثية الأبعاد وتُصقل داخل بيئة النمذجة، ثم تُنقل إلى مرحلة التصور البصري — مما يختصر المسافة بين الفكرة الأولية ومجموعة منسَّقة من الرسومات والمناظر."
+            };
+            var KEY = 'zalab-lang';
+            var root = document.documentElement;
+            var toggle = document.getElementById('lang-toggle');
+            var ATTRS = ['alt', 'placeholder', 'aria-label', 'data-label'];
+            var textNodes = [], attrNodes = [];
+            var norm = function (s) { return s.replace(/\s+/g, ' ').trim(); };
+            var pick = function (en, isAr) { return (isAr && AR[norm(en)]) || en; };
+
+            var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null);
+            while (walker.nextNode()) {
+                var n = walker.currentNode;
+                if (!norm(n.nodeValue) || n.parentNode.closest('script, style, .lang-toggle')) continue;
+                textNodes.push({ node: n, en: n.nodeValue });
+            }
+            Array.prototype.forEach.call(document.querySelectorAll('[alt], [placeholder], [aria-label], [data-label]'), function (el) {
+                if (el.closest('.lang-toggle')) return;
+                var orig = {};
+                ATTRS.forEach(function (a) { if (el.hasAttribute(a)) orig[a] = el.getAttribute(a); });
+                attrNodes.push({ el: el, orig: orig });
+            });
+
+            var titleEn = document.title;
+            var metaEl = document.querySelector('meta[name="description"]');
+            var metaEn = metaEl ? metaEl.getAttribute('content') : '';
+
+            /* Line figures drawn by Hairline may already carry the English label: keep them in step */
+            function syncFigure(fig, en, isAr) {
+                var now = pick(en, isAr);
+                [fig].concat(Array.prototype.slice.call(fig.querySelectorAll('[aria-label]'))).forEach(function (e) {
+                    var cur = e.getAttribute('aria-label');
+                    if (cur === en || cur === AR[norm(en)]) { e.setAttribute('aria-label', now); }
+                });
+            }
+
+            function apply(lang, remember) {
+                var isAr = lang === 'ar';
+                root.lang = isAr ? 'ar' : 'en';
+                root.dir = isAr ? 'rtl' : 'ltr';
+                textNodes.forEach(function (r) {
+                    var t = isAr ? AR[norm(r.en)] : null;
+                    r.node.nodeValue = t ? r.en.match(/^\s*/)[0] + t + r.en.match(/\s*$/)[0] : r.en;
+                });
+                attrNodes.forEach(function (r) {
+                    for (var a in r.orig) { r.el.setAttribute(a, pick(r.orig[a], isAr)); }
+                    if (r.orig['data-label']) { syncFigure(r.el, r.orig['data-label'], isAr); }
+                });
+                document.title = pick(titleEn, isAr);
+                if (metaEl) { metaEl.setAttribute('content', pick(metaEn, isAr)); }
+                toggle.textContent = isAr ? 'English' : 'العربية';
+                toggle.setAttribute('lang', isAr ? 'en' : 'ar');
+                toggle.setAttribute('aria-label', isAr ? 'Switch language to English' : 'التبديل إلى اللغة العربية');
+                if (remember) { try { localStorage.setItem(KEY, lang); } catch (e) {} }
+            }
+
+            var saved = null;
+            try { saved = localStorage.getItem(KEY); } catch (e) {}
+            apply(saved === 'ar' ? 'ar' : 'en', false);
+            toggle.addEventListener('click', function () { apply(root.lang === 'ar' ? 'en' : 'ar', true); });
+        })();
+    </script>
 
 </body>
 </html>

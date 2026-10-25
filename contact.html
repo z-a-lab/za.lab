@@ -6,6 +6,7 @@
     <title>Contact — Z.A Lab</title>
     <meta name="description" content="Get in touch with Z.A Lab — architectural AI, parametric design, workshops, and collaborations.">
     <link rel="stylesheet" href="styles.css">
+    <script>try{if(localStorage.getItem('zalab-lang')==='ar'){document.documentElement.lang='ar';document.documentElement.dir='rtl';}}catch(e){}</script>
 </head>
 <body>
 
@@ -22,6 +23,7 @@
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
+        <button type="button" class="lang-toggle" id="lang-toggle" lang="ar" aria-label="التبديل إلى اللغة العربية">العربية</button>
     </header>
 
     <section>
@@ -166,6 +168,108 @@
             }, { rootMargin: '200px' });
             figures.forEach((el) => observer.observe(el));
         }
+    </script>
+
+    <script>
+        /* Language switch (English / Arabic). The English text stays in the markup above;
+           the Arabic text lives in this dictionary and is swapped in when Arabic is chosen.
+           The choice is remembered across pages. */
+        (function () {
+            var AR = {
+                "Home": "الرئيسية",
+                "Projects": "المشاريع",
+                "Research": "الأبحاث",
+                "Contact": "تواصل معنا",
+                "Architectural AI & Computational Design Lab": "مختبر الذكاء الاصطناعي المعماري والتصميم الحوسبي",
+                "© 2025 Z.A Lab — All Rights Reserved": "© 2025 Z.A Lab — جميع الحقوق محفوظة",
+                "Z.A Lab Logo": "شعار Z.A Lab",
+                "Instagram": "إنستغرام",
+                "LinkedIn": "لينكدإن",
+                "Patreon": "باترون",
+                "YouTube": "يوتيوب",
+                "Contact — Z.A Lab": "تواصل معنا — Z.A Lab",
+                "Get in touch with Z.A Lab — architectural AI, parametric design, workshops, and collaborations.": "تواصل مع Z.A Lab — الذكاء الاصطناعي المعماري، والتصميم البارامتري، وورش العمل، والتعاون.",
+                "Get in Touch": "ابقَ على تواصل",
+                "For project inquiries, workshop bookings, collaborations, or general questions — reach out directly or connect through any of the platforms below.": "للاستفسارات حول المشاريع، أو حجز ورش العمل، أو التعاون، أو الأسئلة العامة — تواصل معنا مباشرة أو عبر أي من المنصات أدناه.",
+                "Send an Inquiry": "أرسل استفسارًا",
+                "Tell us about your project": "حدّثنا عن مشروعك",
+                "Fill out the form below and we'll get back to you within 1–2 business days.": "املأ النموذج أدناه وسنرد عليك خلال 1–2 يوم عمل.",
+                "Name": "الاسم",
+                "Your full name": "اسمك الكامل",
+                "Email": "البريد الإلكتروني",
+                "Project Type": "نوع المشروع",
+                "Select one": "اختر أحدها",
+                "Full Project": "مشروع متكامل",
+                "Architectural Visualization": "التصور المعماري",
+                "Computational Design": "التصميم الحوسبي",
+                "AI Design & Motion": "التصميم والحركة بالذكاء الاصطناعي",
+                "Workshop / Course Inquiry": "استفسار عن ورشة عمل / دورة",
+                "Other": "أخرى",
+                "Message": "الرسالة",
+                "Tell us a bit about what you're looking for...": "أخبرنا قليلًا عمّا تبحث عنه...",
+                "Send Message": "إرسال الرسالة",
+                "A router whose antennas lean toward the pointer": "راوتر تميل هوائياته نحو المؤشر",
+                "Social Media": "وسائل التواصل الاجتماعي"
+            };
+            var KEY = 'zalab-lang';
+            var root = document.documentElement;
+            var toggle = document.getElementById('lang-toggle');
+            var ATTRS = ['alt', 'placeholder', 'aria-label', 'data-label'];
+            var textNodes = [], attrNodes = [];
+            var norm = function (s) { return s.replace(/\s+/g, ' ').trim(); };
+            var pick = function (en, isAr) { return (isAr && AR[norm(en)]) || en; };
+
+            var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null);
+            while (walker.nextNode()) {
+                var n = walker.currentNode;
+                if (!norm(n.nodeValue) || n.parentNode.closest('script, style, .lang-toggle')) continue;
+                textNodes.push({ node: n, en: n.nodeValue });
+            }
+            Array.prototype.forEach.call(document.querySelectorAll('[alt], [placeholder], [aria-label], [data-label]'), function (el) {
+                if (el.closest('.lang-toggle')) return;
+                var orig = {};
+                ATTRS.forEach(function (a) { if (el.hasAttribute(a)) orig[a] = el.getAttribute(a); });
+                attrNodes.push({ el: el, orig: orig });
+            });
+
+            var titleEn = document.title;
+            var metaEl = document.querySelector('meta[name="description"]');
+            var metaEn = metaEl ? metaEl.getAttribute('content') : '';
+
+            /* Line figures drawn by Hairline may already carry the English label: keep them in step */
+            function syncFigure(fig, en, isAr) {
+                var now = pick(en, isAr);
+                [fig].concat(Array.prototype.slice.call(fig.querySelectorAll('[aria-label]'))).forEach(function (e) {
+                    var cur = e.getAttribute('aria-label');
+                    if (cur === en || cur === AR[norm(en)]) { e.setAttribute('aria-label', now); }
+                });
+            }
+
+            function apply(lang, remember) {
+                var isAr = lang === 'ar';
+                root.lang = isAr ? 'ar' : 'en';
+                root.dir = isAr ? 'rtl' : 'ltr';
+                textNodes.forEach(function (r) {
+                    var t = isAr ? AR[norm(r.en)] : null;
+                    r.node.nodeValue = t ? r.en.match(/^\s*/)[0] + t + r.en.match(/\s*$/)[0] : r.en;
+                });
+                attrNodes.forEach(function (r) {
+                    for (var a in r.orig) { r.el.setAttribute(a, pick(r.orig[a], isAr)); }
+                    if (r.orig['data-label']) { syncFigure(r.el, r.orig['data-label'], isAr); }
+                });
+                document.title = pick(titleEn, isAr);
+                if (metaEl) { metaEl.setAttribute('content', pick(metaEn, isAr)); }
+                toggle.textContent = isAr ? 'English' : 'العربية';
+                toggle.setAttribute('lang', isAr ? 'en' : 'ar');
+                toggle.setAttribute('aria-label', isAr ? 'Switch language to English' : 'التبديل إلى اللغة العربية');
+                if (remember) { try { localStorage.setItem(KEY, lang); } catch (e) {} }
+            }
+
+            var saved = null;
+            try { saved = localStorage.getItem(KEY); } catch (e) {}
+            apply(saved === 'ar' ? 'ar' : 'en', false);
+            toggle.addEventListener('click', function () { apply(root.lang === 'ar' ? 'en' : 'ar', true); });
+        })();
     </script>
 
 </body>

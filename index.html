@@ -6,6 +6,7 @@
     <title>Z.A Lab — Architectural AI & Computational Design</title>
     <meta name="description" content="Z.A Lab is a research and services lab at the intersection of architectural design, artificial intelligence, and parametric computation.">
     <link rel="stylesheet" href="styles.css">
+    <script>try{if(localStorage.getItem('zalab-lang')==='ar'){document.documentElement.lang='ar';document.documentElement.dir='rtl';}}catch(e){}</script>
     <style>
         /* Featured project */
         .featured-project {
@@ -59,6 +60,7 @@
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
+        <button type="button" class="lang-toggle" id="lang-toggle" lang="ar" aria-label="التبديل إلى اللغة العربية">العربية</button>
     </header>
 
     <section id="about" class="hero-section">
@@ -172,6 +174,104 @@
             }, { rootMargin: '200px' });
             figures.forEach((el) => observer.observe(el));
         }
+    </script>
+
+    <script>
+        /* Language switch (English / Arabic). The English text stays in the markup above;
+           the Arabic text lives in this dictionary and is swapped in when Arabic is chosen.
+           The choice is remembered across pages. */
+        (function () {
+            var AR = {
+                "Home": "الرئيسية",
+                "Projects": "المشاريع",
+                "Research": "الأبحاث",
+                "Contact": "تواصل معنا",
+                "Architectural AI & Computational Design Lab": "مختبر الذكاء الاصطناعي المعماري والتصميم الحوسبي",
+                "© 2025 Z.A Lab — All Rights Reserved": "© 2025 Z.A Lab — جميع الحقوق محفوظة",
+                "Z.A Lab Logo": "شعار Z.A Lab",
+                "Instagram": "إنستغرام",
+                "LinkedIn": "لينكدإن",
+                "Patreon": "باترون",
+                "YouTube": "يوتيوب",
+                "Z.A Lab — Architectural AI & Computational Design": "Z.A Lab — الذكاء الاصطناعي المعماري والتصميم الحوسبي",
+                "Z.A Lab is a research and services lab at the intersection of architectural design, artificial intelligence, and parametric computation.": "Z.A Lab مختبر للبحث والخدمات يقع عند تقاطع التصميم المعماري والذكاء الاصطناعي والحوسبة البارامترية.",
+                "Research & Services Lab": "مختبر للبحث والخدمات",
+                "Architectural & Interior Design": "التصميم المعماري والداخلي",
+                "Advanced by Computation & AI": "مُطوَّر بالحوسبة والذكاء الاصطناعي",
+                "Z.A Lab is a design lab at the intersection of architectural practice, artificial intelligence, and parametric computation — redefining how a design is imagined, developed, and visualized.": "Z.A Lab مختبر تصميم يقع عند تقاطع الممارسة المعمارية والذكاء الاصطناعي والحوسبة البارامترية، يعيد تعريف كيفية تخيّل التصميم وتطويره وتصويره بصريًا.",
+                "Architectural Design": "التصميم المعماري",
+                "AI Visualization": "التصور البصري بالذكاء الاصطناعي",
+                "Parametric Modeling": "النمذجة البارامترية",
+                "Computational Design": "التصميم الحوسبي",
+                "Showreel": "عرض مرئي للأعمال",
+                "Featured Project": "المشروع المميّز",
+                "Polygonal Perforation — faceted white facade with irregular polygonal openings": "التثقيب متعدد الأضلاع — واجهة بيضاء متعددة الأوجه بفتحات متعددة الأضلاع غير منتظمة",
+                "Polygonal Perforation": "التثقيب متعدد الأضلاع",
+                "Commercial — Facade Research": "تجاري — بحث الواجهات",
+                "Inspired by crystal faceted geometries, the facade is constructed upon a logic of Voronoi pattern to develop irregular, unique polygonal perforations.": "مستوحاة من الأشكال الهندسية البلورية متعددة الأوجه، شُيّدت الواجهة على منطق نمط فورونوي لتوليد تثقيبات متعددة الأضلاع غير منتظمة وفريدة.",
+                "View project": "عرض المشروع",
+                "→": "←",
+                "Crooked tiles sliding into an ordered tree as the pointer approaches": "بلاطات مائلة تنزلق لتشكّل شجرة منتظمة عند اقتراب المؤشر"
+            };
+            var KEY = 'zalab-lang';
+            var root = document.documentElement;
+            var toggle = document.getElementById('lang-toggle');
+            var ATTRS = ['alt', 'placeholder', 'aria-label', 'data-label'];
+            var textNodes = [], attrNodes = [];
+            var norm = function (s) { return s.replace(/\s+/g, ' ').trim(); };
+            var pick = function (en, isAr) { return (isAr && AR[norm(en)]) || en; };
+
+            var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null);
+            while (walker.nextNode()) {
+                var n = walker.currentNode;
+                if (!norm(n.nodeValue) || n.parentNode.closest('script, style, .lang-toggle')) continue;
+                textNodes.push({ node: n, en: n.nodeValue });
+            }
+            Array.prototype.forEach.call(document.querySelectorAll('[alt], [placeholder], [aria-label], [data-label]'), function (el) {
+                if (el.closest('.lang-toggle')) return;
+                var orig = {};
+                ATTRS.forEach(function (a) { if (el.hasAttribute(a)) orig[a] = el.getAttribute(a); });
+                attrNodes.push({ el: el, orig: orig });
+            });
+
+            var titleEn = document.title;
+            var metaEl = document.querySelector('meta[name="description"]');
+            var metaEn = metaEl ? metaEl.getAttribute('content') : '';
+
+            /* Line figures drawn by Hairline may already carry the English label: keep them in step */
+            function syncFigure(fig, en, isAr) {
+                var now = pick(en, isAr);
+                [fig].concat(Array.prototype.slice.call(fig.querySelectorAll('[aria-label]'))).forEach(function (e) {
+                    var cur = e.getAttribute('aria-label');
+                    if (cur === en || cur === AR[norm(en)]) { e.setAttribute('aria-label', now); }
+                });
+            }
+
+            function apply(lang, remember) {
+                var isAr = lang === 'ar';
+                root.lang = isAr ? 'ar' : 'en';
+                root.dir = isAr ? 'rtl' : 'ltr';
+                textNodes.forEach(function (r) {
+                    var t = isAr ? AR[norm(r.en)] : null;
+                    r.node.nodeValue = t ? r.en.match(/^\s*/)[0] + t + r.en.match(/\s*$/)[0] : r.en;
+                });
+                attrNodes.forEach(function (r) {
+                    for (var a in r.orig) { r.el.setAttribute(a, pick(r.orig[a], isAr)); }
+                    if (r.orig['data-label']) { syncFigure(r.el, r.orig['data-label'], isAr); }
+                });
+                document.title = pick(titleEn, isAr);
+                if (metaEl) { metaEl.setAttribute('content', pick(metaEn, isAr)); }
+                toggle.textContent = isAr ? 'English' : 'العربية';
+                toggle.setAttribute('lang', isAr ? 'en' : 'ar');
+                toggle.setAttribute('aria-label', isAr ? 'Switch language to English' : 'التبديل إلى اللغة العربية');
+                if (remember) { try { localStorage.setItem(KEY, lang); } catch (e) {} }
+            }
+
+            var saved = null;
+            try { saved = localStorage.getItem(KEY); } catch (e) {}
+            apply(saved === 'ar' ? 'ar' : 'en', false);
+            toggle.addEventListener('click', function () { apply(root.lang === 'ar' ? 'en' : 'ar', true); });
+        })();
     </script>
 
 </body>

@@ -3,7 +3,7 @@
    Theme: Pure Monochrome — White & Black (Inverted)
    ============================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@300;400;500;700&family=Amiri:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&display=swap');
 
 /* ── CSS Variables ── */
 :root {
@@ -24,9 +24,10 @@
   --accent-muted: rgba(0, 0, 0, 0.05);
   --accent-border: rgba(0, 0, 0, 0.14);
 
-  --font-display: 'Cormorant Garamond', Georgia, serif;
-  --font-body: 'Barlow', sans-serif;
-  --font-condensed: 'Barlow Condensed', sans-serif;
+  /* Latin glyphs come from the original fonts; Arabic glyphs fall back to Amiri / IBM Plex Sans Arabic */
+  --font-display: 'Cormorant Garamond', 'Amiri', Georgia, serif;
+  --font-body: 'Barlow', 'IBM Plex Sans Arabic', sans-serif;
+  --font-condensed: 'Barlow Condensed', 'IBM Plex Sans Arabic', sans-serif;
 
   --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1070,4 +1071,102 @@ footer p {
   .hero-title {
     font-size: 1.8rem;
   }
+}
+
+/* ============================================
+   LANGUAGE SWITCH (English / Arabic)
+   ============================================ */
+
+/* Language button — always the top-right corner of the header */
+.lang-toggle {
+  flex-shrink: 0;
+  font-family: 'IBM Plex Sans Arabic', var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  color: var(--white);
+  background: transparent;
+  border: 1px solid var(--accent-border);
+  border-radius: 1px;
+  padding: 9px 18px;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
+}
+
+.lang-toggle:hover,
+.lang-toggle:focus-visible {
+  background: var(--white);
+  color: var(--black);
+  border-color: var(--white);
+  outline: none;
+}
+
+@media (max-width: 768px) {
+  .lang-toggle {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    padding: 8px 14px;
+  }
+}
+
+/* ── Arabic (right-to-left) ── */
+
+/* Arabic script must stay connected: no letter-spacing, no forced capitals, no italics */
+html[lang="ar"] *,
+html[lang="ar"] *::before,
+html[lang="ar"] *::after {
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+
+html[lang="ar"] em { font-style: normal; }
+
+/* The Latin wordmark keeps its original look */
+html[lang="ar"] header h1,
+html[lang="ar"] .footer-brand {
+  letter-spacing: 0.25em !important;
+  text-transform: uppercase !important;
+}
+
+html[lang="ar"] p,
+html[lang="ar"] .hero-subtitle,
+html[lang="ar"] .project-brief p { line-height: 1.9; }
+
+/* Header keeps logo left and the language button top-right in both languages */
+html[dir="rtl"] header { direction: ltr; }
+html[dir="rtl"] nav ul { direction: rtl; }
+html[dir="rtl"] nav ul li a::after { transform-origin: right; }
+
+/* Text alignment that the English layout fixes to the left */
+html[dir="rtl"] .hero-content,
+html[dir="rtl"] .featured-project,
+html[dir="rtl"] .featured-copy h2,
+html[dir="rtl"] .featured-meta,
+html[dir="rtl"] .featured-copy p,
+html[dir="rtl"] .project-detail { text-align: right; }
+
+/* Directional gradients, arrows and offsets */
+html[dir="rtl"] .section-label::after { background: linear-gradient(to left, var(--accent-border), transparent); }
+html[dir="rtl"] .divider { background: linear-gradient(to left, rgba(0, 0, 0, 0.3), transparent); }
+html[dir="rtl"] .contact-form-panel::before { background: linear-gradient(to left, rgba(0, 0, 0, 0.4), transparent 70%); }
+html[dir="rtl"] .button-link::after { content: '←'; }
+html[dir="rtl"] .button-link:hover::after { transform: translateX(-4px); }
+html[dir="rtl"] .category-group .section-label::before { margin-right: 0; margin-left: 0.5rem; }
+html[dir="rtl"] .featured-publication { border-left-width: 1px; border-right-width: 6px; }
+html[dir="rtl"] .form-group select { background-position: 6px center, 1px center; }
+
+/* Left-to-right content inside right-to-left pages */
+html[dir="rtl"] .form-group input[type="email"] { direction: ltr; text-align: right; }
+html[dir="rtl"] .contact-block a[href^="mailto:"] { display: inline-block; direction: ltr; unicode-bidi: isolate; }
+
+/* Citation block stays in English (published title, authors, journal) and aligns to its own script */
+html[dir="rtl"] #publication-title,
+html[dir="rtl"] .pub-meta,
+html[dir="rtl"] .pub-journal,
+html[dir="rtl"] .pub-cite { unicode-bidi: plaintext; text-align: start; }
+
+@media (max-width: 900px) {
+  html[dir="rtl"] .hero-content { text-align: center; }
 }

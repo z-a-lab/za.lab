@@ -6,6 +6,7 @@
     <title>Projects — Z.A Lab</title>
     <meta name="description" content="Projects by Z.A Lab — AI architectural visualization, parametric modeling, and computational design.">
     <link rel="stylesheet" href="styles.css">
+    <script>try{if(localStorage.getItem('zalab-lang')==='ar'){document.documentElement.lang='ar';document.documentElement.dir='rtl';}}catch(e){}</script>
     <style>
         /* Design Categories — a quiet hinting layer on top of styles.css */
         :root {
@@ -220,6 +221,7 @@
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
+        <button type="button" class="lang-toggle" id="lang-toggle" lang="ar" aria-label="التبديل إلى اللغة العربية">العربية</button>
     </header>
 
     <section>
@@ -690,6 +692,191 @@
                 });
             }
             fromHash(location.hash.length > 1 && projIds.indexOf(location.hash.slice(1)) !== -1);
+        })();
+    </script>
+
+    <script>
+        /* Language switch (English / Arabic). The English text stays in the markup above;
+           the Arabic text lives in this dictionary and is swapped in when Arabic is chosen.
+           The choice is remembered across pages. */
+        (function () {
+            var AR = {
+                "Home": "الرئيسية",
+                "Projects": "المشاريع",
+                "Research": "الأبحاث",
+                "Contact": "تواصل معنا",
+                "Architectural AI & Computational Design Lab": "مختبر الذكاء الاصطناعي المعماري والتصميم الحوسبي",
+                "© 2025 Z.A Lab — All Rights Reserved": "© 2025 Z.A Lab — جميع الحقوق محفوظة",
+                "Z.A Lab Logo": "شعار Z.A Lab",
+                "Instagram": "إنستغرام",
+                "LinkedIn": "لينكدإن",
+                "Patreon": "باترون",
+                "YouTube": "يوتيوب",
+                "Projects — Z.A Lab": "المشاريع — Z.A Lab",
+                "Projects by Z.A Lab — AI architectural visualization, parametric modeling, and computational design.": "مشاريع Z.A Lab — التصور المعماري بالذكاء الاصطناعي، والنمذجة البارامترية، والتصميم الحوسبي.",
+                "Selected Works": "أعمال مختارة",
+                "Bridging creative vision with contemporary architectural tools — a curated selection of work across conceptual design, AI visualization, and computational research.": "الجمع بين الرؤية الإبداعية وأدوات العمارة المعاصرة — مجموعة منتقاة من الأعمال في التصميم المفاهيمي والتصور البصري بالذكاء الاصطناعي والبحث الحوسبي.",
+                "Design Categories": "فئات التصميم",
+                "Design categories": "فئات التصميم",
+                "All": "الكل",
+                "Residential": "سكني",
+                "Commercial": "تجاري",
+                "Interior": "داخلي",
+                "Product": "منتجات",
+                "Landscape": "المناظر الطبيعية",
+                "←": "→",
+                "→": "←",
+                "All projects": "جميع المشاريع",
+                "View project": "عرض المشروع",
+                "Project brief": "نبذة عن المشروع",
+                "Category": "الفئة",
+                "Method": "المنهجية",
+                "Computational Design, Generative AI, Technical Design Approaches": "التصميم الحوسبي، الذكاء الاصطناعي التوليدي، أساليب التصميم التقني",
+                "A building section with an elevator car travelling between four floors": "مقطع في مبنى مع مصعد يتنقل بين أربعة طوابق",
+                "Stacked floor plates lifting apart to open one level": "ألواح طوابق متراصة ترتفع متباعدة لتفتح طابقًا واحدًا",
+                "A cabinet of three drawers, one sliding open": "خزانة من ثلاثة أدراج، أحدها ينزلق مفتوحًا",
+                "Blocks on a turntable that spins with the pointer": "كتل على منصة دوّارة تدور مع حركة المؤشر",
+                "A field of pillars rising like terrain around the pointer": "حقل من الأعمدة ترتفع كالتضاريس حول المؤشر",
+                "01 — Facade Research": "01 — بحث الواجهات",
+                "Ornamental Facade": "الواجهة الزخرفية",
+                "Investigating the intersection of computational ornamentation and architectural envelope design — generating patterned facade systems that encode cultural, structural, and environmental logic through parametric repetition and variation.": "استكشاف تقاطع الزخرفة الحوسبية مع تصميم الغلاف المعماري — توليد أنظمة واجهات منقوشة تُرمِّز المنطق الثقافي والإنشائي والبيئي من خلال التكرار والتنوّع البارامتري.",
+                "Perforated facade seen from the plaza, with a fully glazed entrance set into the patterned volume": "واجهة مثقّبة تُرى من الساحة، مع مدخل مزجّج بالكامل مدمج في الكتلة المنقوشة",
+                "A perforated envelope wraps a compact volume, its diamond-shaped apertures repeating across the surface in a rhythm that filters light while keeping the facade legible as a single, calm mass.": "يلتف غلاف مثقّب حول كتلة مدمجة، وتتكرر فتحاته المعيّنية الشكل على السطح بإيقاع يرشّح الضوء مع إبقاء الواجهة مقروءة ككتلة واحدة هادئة.",
+                "The study treats ornament as a performative layer rather than decoration: pattern density, aperture size and repetition are parameters that can be tuned toward privacy, shade and cultural reference.": "تتعامل الدراسة مع الزخرفة بوصفها طبقة أدائية لا مجرد تزيين: فكثافة النمط وحجم الفتحات والتكرار معاملات يمكن ضبطها نحو الخصوصية والتظليل والإحالة الثقافية.",
+                "Animated study of the ornamental facade": "دراسة متحركة للواجهة الزخرفية",
+                "02 — Parametric Geometry": "02 — الهندسة البارامترية",
+                "Sine Wave Architecture": "عمارة الموجة الجيبية",
+                "A structural envelope generated from continuous sine-wave modulation — translating a simple periodic function into undulating architectural surfaces through Grasshopper scripting and AI-driven visualization.": "غلاف إنشائي مولَّد من تضمين موجة جيبية مستمرة — يحوّل دالة دورية بسيطة إلى أسطح معمارية متموجة عبر برمجة Grasshopper والتصور البصري المدفوع بالذكاء الاصطناعي.",
+                "Sine-wave shell with a glazed front facing a paved forecourt": "قشرة بموجة جيبية بواجهة مزجّجة تطل على فناء أمامي مرصوف",
+                "A single continuous shell rises and falls along a sine curve, forming a vaulted white envelope that opens into a fully glazed front. The roof and walls read as one surface rather than separate elements.": "تعلو قشرة واحدة متصلة وتنخفض على امتداد منحنى جيبي، لتشكّل غلافًا أبيض مقبّبًا ينفتح على واجهة مزجّجة بالكامل. ويُقرأ السقف والجدران كسطح واحد لا كعناصر منفصلة.",
+                "Amplitude and frequency of the wave drive the form, so a small change in the underlying function reshapes the whole section — a direct way to test spatial proportion, daylight and entry sequence.": "يقود سعة الموجة وتردّدها الشكل، فيؤدي تغيير بسيط في الدالة الأساسية إلى إعادة تشكيل المقطع بأكمله — وسيلة مباشرة لاختبار النسب الفراغية والإضاءة الطبيعية وتسلسل الدخول.",
+                "Animated study of the sine-wave envelope": "دراسة متحركة للغلاف ذي الموجة الجيبية",
+                "Curved vault at dusk, with warm interior lighting visible through the glazing": "قبو منحنٍ عند الغسق، مع إضاءة داخلية دافئة ظاهرة عبر الزجاج",
+                "Side view of the undulating envelope framed by planting": "منظر جانبي للغلاف المتموج تحيط به النباتات",
+                "03 — Facade Research": "03 — بحث الواجهات",
+                "Polygonal Perforation": "التثقيب متعدد الأضلاع",
+                "Inspired by crystal faceted geometries, the facade is constructed upon a logic of Voronoi pattern to develop irregular, unique polygonal perforations — a folded white skin that filters daylight into a commercial volume above a fully glazed ground floor.": "مستوحاة من الأشكال الهندسية البلورية متعددة الأوجه، شُيّدت الواجهة على منطق نمط فورونوي لتوليد تثقيبات متعددة الأضلاع غير منتظمة وفريدة — جلد أبيض مطويّ يرشّح ضوء النهار إلى كتلة تجارية فوق طابق أرضي مزجّج بالكامل.",
+                "Corner view of the faceted white facade with irregular polygonal openings above a glazed ground floor": "منظر زاوية للواجهة البيضاء متعددة الأوجه بفتحات متعددة الأضلاع غير منتظمة فوق طابق أرضي مزجّج",
+                "Inspired by crystal faceted geometries, the facade is constructed upon a logic of Voronoi pattern to develop irregular, unique polygonal perforations. Each opening grows from a cell of the diagram, so no two apertures share the same shape or size.": "مستوحاة من الأشكال الهندسية البلورية متعددة الأوجه، شُيّدت الواجهة على منطق نمط فورونوي لتوليد تثقيبات متعددة الأضلاع غير منتظمة وفريدة. تنمو كل فتحة من خلية في المخطط، فلا تتشارك فتحتان الشكل أو الحجم نفسه.",
+                "Folded facets surround every opening and carry the surface in and out of shadow through the day. The same faceted skin continues inside, shaping the atrium ceiling and bringing daylight down into the floors, while a plain flank wall and a transparent base keep the volume calm at street level.": "تحيط أوجه مطوية بكل فتحة وتنقل السطح بين الظل والضوء على مدار اليوم. ويستمر الجلد متعدد الأوجه نفسه في الداخل، فيشكّل سقف الأتريوم ويُنزل ضوء النهار إلى الطوابق، بينما يحافظ جدار جانبي بسيط وقاعدة شفافة على هدوء الكتلة عند مستوى الشارع.",
+                "Animated study of the perforated facade": "دراسة متحركة للواجهة المثقّبة",
+                "Close view of the faceted panels folding around irregular polygonal openings": "منظر قريب للألواح متعددة الأوجه وهي تلتف حول فتحات متعددة الأضلاع غير منتظمة",
+                "Detail of the openings with interior lighting and planting visible through the glass": "تفصيل للفتحات مع إضاءة داخلية ونباتات ظاهرة من خلال الزجاج",
+                "Detail of the openings, with interior lighting and planting visible through the glass": "تفصيل للفتحات مع إضاءة داخلية ونباتات ظاهرة من خلال الزجاج",
+                "Atrium where the faceted skin continues overhead and admits daylight": "أتريوم يمتد فيه الجلد متعدد الأوجه فوق الرؤوس ويُدخل ضوء النهار",
+                "Front elevation of the perforated skin above a fully glazed ground floor": "الواجهة الأمامية للجلد المثقّب فوق طابق أرضي مزجّج بالكامل",
+                "04 — Material Study": "04 — دراسة المواد",
+                "Stratified Travertine": "الترافرتين الطبقي",
+                "An investigation into travertine as a generative material logic — layering sedimentary strata into an architectural massing study that explores texture, porosity, and light through AI-assisted material visualization.": "استقصاء للترافرتين بوصفه منطقًا مادّيًا توليديًا — تتراكم فيه الطبقات الرسوبية في دراسة كتلة معمارية تستكشف الملمس والمسامية والضوء عبر تصور المواد بمساعدة الذكاء الاصطناعي.",
+                "Aerial view of the layered travertine massing within its urban block": "منظر جوي لكتلة الترافرتين الطبقية ضمن الكتلة العمرانية المحيطة بها",
+                "Stacked, softly offset travertine bands form a mid-rise massing whose plan edge undulates, so each floor plate catches light differently and the building reads like a cut through sedimentary rock.": "تشكّل أشرطة الترافرتين المتراصّة والمزاحة برفق كتلةً متوسطة الارتفاع يتموّج حدّها في المسقط، فتلتقط كل بلاطة طابق الضوء بشكل مختلف ويبدو المبنى كمقطع في صخر رسوبي.",
+                "The massing was first resolved as a clean geometric model, then carried into visualization to study how the stone layering, glazing at the base and surrounding streetscape work together.": "جرى حلّ الكتلة أولًا كنموذج هندسي نظيف، ثم نُقلت إلى مرحلة التصور البصري لدراسة كيفية تضافر طبقات الحجر والزجاج عند القاعدة ومشهد الشارع المحيط.",
+                "Animated study of the stratified massing": "دراسة متحركة للكتلة الطبقية",
+                "Street-level view showing the stratified facade rising above a glazed base": "منظر من مستوى الشارع يُظهر الواجهة الطبقية ترتفع فوق قاعدة مزجّجة",
+                "Massing model studies — plan outline and elevation of the undulating layers": "دراسات نموذج الكتلة — مخطط المسقط والواجهة للطبقات المتموّجة",
+                "05 — Facade Research": "05 — بحث الواجهات",
+                "Modular Tile Facade System": "نظام واجهات البلاط المعياري",
+                "A modular tiling system for architectural envelopes, studying repetition, variation, and assembly logic at facade scale — bridging parametric tile generation with AI-assisted material and lighting studies.": "نظام تبليط معياري للأغلفة المعمارية، يدرس التكرار والتنوع ومنطق التجميع على مستوى الواجهة — يربط توليد البلاط البارامتري بدراسات المواد والإضاءة بمساعدة الذكاء الاصطناعي.",
+                "A facade built from a small family of modular tiles, where repetition keeps assembly rational and controlled variation gives the surface depth and rhythm.": "واجهة مبنية من عائلة صغيرة من البلاطات المعيارية، حيث يُبقي التكرار التجميع منطقيًا ويمنح التنوع المضبوط السطح عمقًا وإيقاعًا.",
+                "The study looks at how tile geometry, joint logic and light interact across a whole elevation, not only on a single unit.": "تنظر الدراسة في كيفية تفاعل هندسة البلاطة ومنطق الفواصل والضوء على امتداد واجهة كاملة، وليس على وحدة واحدة فقط.",
+                "06 — Sacred Architecture": "06 — العمارة المقدّسة",
+                "Crystal Mosque": "المسجد البلوري",
+                "A faceted reinterpretation of mosque typology, where crystalline geometry replaces conventional massing to modulate light, structure, and spiritual atmosphere — developed through parametric faceting and AI-driven visualization.": "إعادة تفسير متعددة الأوجه لنمط المسجد، حيث تحل الهندسة البلورية محل الكتلة التقليدية لتضبط الضوء والبنية والأجواء الروحانية — طُوّرت عبر تشكيل الأوجه البارامتري والتصور البصري المدفوع بالذكاء الاصطناعي.",
+                "Aerial view of the faceted roof over a street corner": "منظر جوي للسقف متعدد الأوجه فوق زاوية شارع",
+                "A folded, faceted roof sits over a central drum with a lantern, with a single minaret marking the corner. The geometry replaces the conventional dome-and-block massing with planes that catch and redirect light.": "يرتكز سقف مطويّ متعدد الأوجه على أسطوانة مركزية يعلوها فانوس، وتحدد مئذنة واحدة الزاوية. وتستبدل الهندسة الكتلة التقليدية القائمة على القبة والكتلة المكعبة بمستويات تلتقط الضوء وتعيد توجيهه.",
+                "The project moves between two registers: a clean white massing model used to resolve the faceting and structure, and atmospheric visualizations that test the form within a dense urban setting.": "يتنقل المشروع بين مستويين: نموذج كتلة أبيض نظيف يُستخدم لحل تشكيل الأوجه والبنية، وتصورات بصرية مشبعة بالأجواء تختبر الشكل ضمن محيط حضري كثيف.",
+                "Animated study of the faceted mosque": "دراسة متحركة للمسجد متعدد الأوجه",
+                "Second aerial view showing the central drum and minaret": "منظر جوي ثانٍ يُظهر الأسطوانة المركزية والمئذنة",
+                "Alternate roof study with a sharper, more angular folding": "دراسة بديلة للسقف بطيّات أكثر حدّة وزاويةً",
+                "Another roof variation seen from above, with a tall minaret": "صيغة أخرى للسقف تُرى من الأعلى، مع مئذنة شاهقة",
+                "Massing model — roof, drum and minaret in plan view": "نموذج الكتلة — السقف والأسطوانة والمئذنة في المسقط الأفقي",
+                "Massing model — three-quarter view of the faceted envelope": "نموذج الكتلة — منظر بزاوية ثلاثة أرباع للغلاف متعدد الأوجه",
+                "Massing model sheet with four views of the roof and minaret": "لوحة نموذج الكتلة بأربعة مناظر للسقف والمئذنة",
+                "07 — Conceptual Form": "07 — الشكل المفاهيمي",
+                "Fluid Chand": "الثريا المنسابة",
+                "Chandelier Geometry that highlights beautiful interior scenery while adding luxurious presence.": "هندسة ثريا تُبرز جمال المشهد الداخلي مع إضفاء حضور فاخر.",
+                "Pendant seen in a bright, minimal room with timber flooring": "ثريا معلّقة ضمن غرفة مضيئة بسيطة ذات أرضية خشبية",
+                "A pendant light built from slender vertical ribs that swell into a rounded body and narrow again at the base, so the fixture reads as a soft, flowing silhouette.": "إضاءة معلّقة مبنية من أضلاع عمودية نحيلة تنتفخ في جسم مستدير ثم تضيق مجددًا عند القاعدة، فيُقرأ التركيب كظلّ ناعم منساب.",
+                "The open ribbing lets light and the room beyond show through, keeping the piece present without blocking the view of the interior.": "تتيح الأضلاع المفتوحة للضوء والغرفة خلفها أن يظهرا من خلالها، فتبقى القطعة حاضرة دون أن تحجب رؤية الفراغ الداخلي.",
+                "Animated study of the pendant": "دراسة متحركة للثريا المعلّقة",
+                "Close view of the ribbed form against a folded ceiling": "منظر قريب للشكل ذي الأضلاع في مقابل سقف مطويّ",
+                "08 — Urban Furniture": "08 — أثاث حضري",
+                "Green Bench": "المقعد الأخضر",
+                "A study in integrating vegetation and seating into a single piece of urban furniture — exploring how planting, shade, and rest can be combined at a human scale within public and landscape settings.": "دراسة في دمج الغطاء النباتي والجلوس في قطعة أثاث حضري واحدة — تستكشف كيف يمكن الجمع بين الزراعة والظل والراحة على المقياس الإنساني ضمن الفضاءات العامة ومواقع المناظر الطبيعية.",
+                "Bench along a curving garden path": "مقعد على امتداد ممر حديقة منحنٍ",
+                "A sliced, continuous bench whose layers shift from pale lime to deep green along its length, so the object itself echoes the planting around it.": "مقعد متصل مقطّع إلى شرائح، تتدرج طبقاته من الأخضر الليموني الباهت إلى الأخضر الداكن على امتداد طوله، فيردّد الجسم نفسه صدى النباتات المحيطة به.",
+                "Placed within a garden path, it is studied at human scale — how it is approached, how it is sat on, and how it sits among foliage.": "يوضع المقعد ضمن ممر حديقة ويُدرس على المقياس الإنساني — كيف يُقترب منه، وكيف يُجلس عليه، وكيف يستقر بين أوراق الشجر.",
+                "Animated study of the bench": "دراسة متحركة للمقعد",
+                "Close view of the layered bench with a seated figure for scale": "منظر قريب للمقعد الطبقي مع شخصية جالسة لإظهار المقياس",
+                "Form studies of the bench shown from four angles": "دراسات شكلية للمقعد من أربع زوايا",
+                "09 — Landscape Design": "09 — تصميم المناظر الطبيعية",
+                "Voronoi Garden": "حديقة فورونوي",
+                "A generative landscape concept built on Voronoi tessellation — using cellular subdivision logic to organize planting beds, pathways, and shaded thresholds into an organic garden composition.": "مفهوم توليدي للمناظر الطبيعية مبني على تبليط فورونوي — يستخدم منطق التقسيم الخلوي لتنظيم أحواض الزراعة والممرات والعتبات المظللة في تكوين حديقة عضوي.",
+                "Eye-level view across lawns, paving and water within the cellular layout": "منظر من مستوى النظر عبر المروج والأرصفة والمياه ضمن التخطيط الخلوي",
+                "A public square organised by Voronoi cells: some become lawns, some paving, and some shallow water, with paths following the cell edges. The result is a garden that feels irregular but is governed by a single rule.": "ساحة عامة منظَّمة بخلايا فورونوي: بعضها يصبح مروجًا، وبعضها رصفًا، وبعضها مياهًا ضحلة، مع ممرات تتبع حواف الخلايا. والنتيجة حديقة تبدو غير منتظمة لكنها محكومة بقاعدة واحدة.",
+                "The study starts from a plan diagram that assigns each cell a function, then follows it through to aerial and eye-level views of the finished composition.": "تنطلق الدراسة من مخطط أفقي يُسند إلى كل خلية وظيفة، ثم تتابعه وصولًا إلى مناظر جوية ومن مستوى النظر للتكوين النهائي.",
+                "Animated study of the garden": "دراسة متحركة للحديقة",
+                "Aerial view of the full square set among surrounding buildings": "منظر جوي للساحة كاملةً وسط المباني المحيطة",
+                "Plan diagram showing cells assigned to lawn, paving and planting": "مخطط أفقي يُظهر الخلايا المخصصة للمروج والرصف والزراعة"
+            };
+            var KEY = 'zalab-lang';
+            var root = document.documentElement;
+            var toggle = document.getElementById('lang-toggle');
+            var ATTRS = ['alt', 'placeholder', 'aria-label', 'data-label'];
+            var textNodes = [], attrNodes = [];
+            var norm = function (s) { return s.replace(/\s+/g, ' ').trim(); };
+            var pick = function (en, isAr) { return (isAr && AR[norm(en)]) || en; };
+
+            var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null);
+            while (walker.nextNode()) {
+                var n = walker.currentNode;
+                if (!norm(n.nodeValue) || n.parentNode.closest('script, style, .lang-toggle')) continue;
+                textNodes.push({ node: n, en: n.nodeValue });
+            }
+            Array.prototype.forEach.call(document.querySelectorAll('[alt], [placeholder], [aria-label], [data-label]'), function (el) {
+                if (el.closest('.lang-toggle')) return;
+                var orig = {};
+                ATTRS.forEach(function (a) { if (el.hasAttribute(a)) orig[a] = el.getAttribute(a); });
+                attrNodes.push({ el: el, orig: orig });
+            });
+
+            var titleEn = document.title;
+            var metaEl = document.querySelector('meta[name="description"]');
+            var metaEn = metaEl ? metaEl.getAttribute('content') : '';
+
+            /* Line figures drawn by Hairline may already carry the English label: keep them in step */
+            function syncFigure(fig, en, isAr) {
+                var now = pick(en, isAr);
+                [fig].concat(Array.prototype.slice.call(fig.querySelectorAll('[aria-label]'))).forEach(function (e) {
+                    var cur = e.getAttribute('aria-label');
+                    if (cur === en || cur === AR[norm(en)]) { e.setAttribute('aria-label', now); }
+                });
+            }
+
+            function apply(lang, remember) {
+                var isAr = lang === 'ar';
+                root.lang = isAr ? 'ar' : 'en';
+                root.dir = isAr ? 'rtl' : 'ltr';
+                textNodes.forEach(function (r) {
+                    var t = isAr ? AR[norm(r.en)] : null;
+                    r.node.nodeValue = t ? r.en.match(/^\s*/)[0] + t + r.en.match(/\s*$/)[0] : r.en;
+                });
+                attrNodes.forEach(function (r) {
+                    for (var a in r.orig) { r.el.setAttribute(a, pick(r.orig[a], isAr)); }
+                    if (r.orig['data-label']) { syncFigure(r.el, r.orig['data-label'], isAr); }
+                });
+                document.title = pick(titleEn, isAr);
+                if (metaEl) { metaEl.setAttribute('content', pick(metaEn, isAr)); }
+                toggle.textContent = isAr ? 'English' : 'العربية';
+                toggle.setAttribute('lang', isAr ? 'en' : 'ar');
+                toggle.setAttribute('aria-label', isAr ? 'Switch language to English' : 'التبديل إلى اللغة العربية');
+                if (remember) { try { localStorage.setItem(KEY, lang); } catch (e) {} }
+            }
+
+            var saved = null;
+            try { saved = localStorage.getItem(KEY); } catch (e) {}
+            apply(saved === 'ar' ? 'ar' : 'en', false);
+            toggle.addEventListener('click', function () { apply(root.lang === 'ar' ? 'en' : 'ar', true); });
         })();
     </script>
 
